@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Hermanos Jota</title>
+    <meta name="description" content="Descubrí nuestra colección de muebles artesanales. Diseño Mid-Century Modern en maderas nativas.">
+    
+    <!-- Precarga de fuentes para evitar FOIT (Manual de Marca 3.C) -->
+    <link rel="preload" as="font" href="src/assets/fonts/inter/inter-v-latin-400.woff2" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="src/assets/fonts/playfair-display/playfair-display-v-latin-700.woff2" type="font/woff2" crossorigin>
+    
+    <link rel="stylesheet" href="src/css/productos.css">
+</head>
+<body>
+    <header class="header-principal">
+        <div class="contenedor header-contenido">
+            <a href="index.html" class="logo-link">
+                <!-- FALTA: logo en formato .svg en src/assets/images/logo.svg -->
+                <span class="logo-texto">Hermanos Jota</span>
+            </a>
+            <nav class="navegacion-principal">
+                <ul class="lista-nav">
+                    <li><a href="index.html" class="link-nav">Taller</a></li>
+                    <li><a href="productos.html" class="link-nav activo">Catálogo</a></li>
+                    <li><a href="#contacto" class="link-nav">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-catalogo">
+        <section class="hero-catalogo">
+            <div class="contenedor hero-contenido">
+                <h1 class="titulo-principal">Nuestro Catálogo</h1>
+                <p class="texto-hero">Piezas diseñadas para acompañar tu vida, elaboradas con maderas nativas y una atención artesanal al detalle.</p>
+                <button id="btn-ver-catalogo" class="btn-primario cta-hero">Explorar las piezas</button>
+            </div>
+        </section>
+
+        <section class="seccion-busqueda">
+            <div class="contenedor busqueda-contenido">
+                <label for="buscador-productos" class="label-buscador">Buscá la pieza ideal para tu hogar</label>
+                <input type="text" id="buscador-productos" class="input-buscador" placeholder="Ej. Sillón Algarrobo, Petiribí...">
+            </div>
+        </section>
+
+        <!-- aria-live polite para anunciar cambios cuando el usuario busca -->
+        <section id="contenedor-productos" class="seccion-productos contenedor" aria-live="polite">
+            <p class="mensaje-carga">Las piezas están saliendo del taller...</p>
+        </section>
+    </main>
+
+    <script src="src/js/productos.js"></script>
+</body>
+</html>
