@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Pieza - Hermanos Jota</title>
+    <meta name="description" content="Detalles, dimensiones y confección artesanal de nuestras piezas en maderas nativas argentinas. Hermanos Jota.">
+    
+    <!-- Precarga de fuentes para evitar FOIT (Manual de Marca 3.C) -->
+    <link rel="preload" as="font" href="assets/fonts/inter/inter-v-latin-400.woff2" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="assets/fonts/playfair-display/playfair-display-v-latin-700.woff2" type="font/woff2" crossorigin>
+    
+    <link rel="stylesheet" href="css/producto.css">
+</head>
+<body>
+
+    <main class="main-detalle-producto">
+        <!-- Migas de pan de navegación -->
+        <nav class="migas-de-pan" aria-label="Ruta de navegación">
+            <ul class="lista-migas">
+                <li><a href="index.html" class="miga-link">Inicio</a></li>
+                <li class="miga-separador">/</li>
+                <li><a href="productos.html" class="miga-link">Catálogo</a></li>
+                <li class="miga-separador">/</li>
+                <li class="miga-actual" id="breadcrumb-producto-actual" aria-current="page">Detalle de Pieza</li>
+            </ul>
+        </nav>
+
+        <!-- Contenedor del producto inyectado dinámicamente -->
+        <section id="contenedor-detalle-producto" class="contenedor-detalle" aria-live="polite">
+            <p class="mensaje-carga">Cargando detalles de la pieza...</p>
+        </section>
+
+        <!-- Secciones de Acordeón: Sustentabilidad y Compromiso de Marca -->
+        <section class="seccion-acordeones" aria-label="Información de sustentabilidad y garantía">
+            <!-- Acordeón 1: Sustentabilidad y Materiales -->
+            <details class="acordeon-item" name="acordeon-info">
+                <summary class="acordeon-header">
+                    <h2>Sustentabilidad y Materiales</h2>
+                    <span class="acordeon-icono" aria-hidden="true"></span>
+                </summary>
+                <div class="acordeon-contenido">
+                    <p class="acordeon-intro">
+                        Nuestro compromiso con el medio ambiente y las futuras generaciones guía cada decisión en nuestro proceso creativo y productivo.
+                    </p>
+                    
+                    <h3 class="acordeon-subtitulo">Principios de Abastecimiento</h3>
+                    <ul class="acordeon-lista">
+                        <li><strong>Madera certificada FSC:</strong> Proveniente de bosques responsables argentinos.</li>
+                        <li><strong>Prioridad a maderas nativas:</strong> Algarrobo, quebracho y caldén seleccionados.</li>
+                        <li><strong>Bajo impacto ambiental:</strong> Solo acabados y adhesivos de bajo COV (Compuestos Orgánicos Volátiles).</li>
+                        <li><strong>Producción local:</strong> Proveedores locales dentro del Gran Buenos Aires.</li>
+                        <li><strong>Economía circular:</strong> 30% mínimo de materiales recuperados o reciclados.</li>
+                        <li><strong>Cero plásticos de un solo uso:</strong> En toda nuestra cadena de valor y empaque.</li>
+                    </ul>
+
+                    <h3 class="acordeon-subtitulo">Acabados Naturales</h3>
+                    <div class="tabla-acabados-wrapper">
+                        <table class="tabla-acordeon">
+                            <thead>
+                                <tr>
+                                    <th>Tipo de Acabado</th>
+                                    <th>Composición</th>
+                                    <th>Aplicación</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Aceite de lino</td>
+                                    <td>100% natural prensado en frío</td>
+                                    <td>Muebles de uso diario</td>
+                                </tr>
+                                <tr>
+                                    <td>Cera de abejas</td>
+                                    <td>Origen local certificado</td>
+                                    <td>Terminación premium</td>
+                                </tr>
+                                <tr>
+                                    <td>Tintes vegetales</td>
+                                    <td>Base agua, pigmentos naturales</td>
+                                    <td>Cuando se requiere color</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </details>
+
+            <!-- Acordeón 2: Programa Herencia Viva -->
+            <details class="acordeon-item" name="acordeon-info">
+                <summary class="acordeon-header">
+                    <h2>Programa Herencia Viva</h2>
+                    <span class="acordeon-icono" aria-hidden="true"></span>
+                </summary>
+                <div class="acordeon-contenido">
+                    <p class="acordeon-intro">
+                        Diseñamos piezas para que trasciendan generaciones con nuestro compromiso integral de longevidad y preservación del oficio.
+                    </p>
+                    
+                    <ul class="acordeon-lista">
+                        <li><strong>Garantía extendida:</strong> 10 años en estructura y 5 años en acabados.</li>
+                        <li><strong>Servicio de restauración:</strong> Recuperamos y renovamos piezas antiguas.</li>
+                        <li><strong>Taller de cuidados:</strong> Capacitación gratuita para clientes.</li>
+                        <li><strong>Recompra garantizada:</strong> Hasta 40% del valor en piezas bien cuidadas.</li>
+                        <li><strong>Certificado de trazabilidad:</strong> Origen de cada material utilizado.</li>
+                    </ul>
+                </div>
+            </details>
+            </section>
+    </main>
+
+    <script type="module" src="js/producto.js"></script>
+</body>
+</html>
