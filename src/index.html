@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hermanos Jota — Mueblería Artesanal</title>
+    <meta name="description" content="Mueblería artesanal Mid-Century Modern. Piezas duraderas de madera nativa sustentable hechas a mano en Buenos Aires desde 1960.">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+
+    <!-- Header principal -->
+    <header class="header">
+        <div class="header__container container">
+            <a href="index.html" class="header__logo-link" aria-label="Ir a la página de inicio de Hermanos Jota">
+                <img src="assets/images/logo.svg" alt="Logotipo de Hermanos Jota Muebles" class="header__logo" width="140" height="50">
+            </a>
+
+            <nav class="nav" aria-label="Navegación principal">
+                <ul class="nav__list">
+                    <li><a href="index.html" class="nav__link nav__link--active" aria-current="page">Inicio</a></li>
+                    <li><a href="productos.html" class="nav__link">Catálogo</a></li>
+                    <li><a href="contacto.html" class="nav__link">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <div class="header__cart-status" aria-label="Estado del carrito">
+                <span class="cart-icon" aria-hidden="true">🛒</span>
+                <span class="cart-count" id="cart-counter">0</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Banner -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero__content container">
+                <h1 id="hero-title" class="hero__title">Mobiliario con historia y alma artesanal</h1>
+                <p class="hero__subtitle">
+                    Desde 1960 creamos piezas únicas en madera nativa, uniendo la tradición carpintera con el diseño Mid-Century Modern.
+                </p>
+                <a href="productos.html" class="btn btn--primary">Explorar catálogo</a>
+            </div>
+        </section>
+
+        <!-- Sección Destacados -->
+        <section class="featured container" aria-labelledby="featured-title">
+            <header class="section-header">
+                <h2 id="featured-title" class="section-header__title">Piezas destacadas</h2>
+                <p class="section-header__subtitle">Selección del taller para transformar tu espacio.</p>
+            </header>
+
+            <!-- Estado de carga -->
+            <div id="loading-state" class="loading-state" aria-live="polite">
+                <p>Cargando piezas del taller...</p>
+            </div>
+
+            <!-- Grilla de productos (se puebla dinámicamente con JS) -->
+            <div id="featured-products-grid" class="products-grid" aria-live="polite"></div>
+        </section>
+
+        <!-- Sección Herencia Viva -->
+        <section class="heritage" aria-labelledby="heritage-title">
+            <div class="heritage__container container">
+                <h2 id="heritage-title" class="heritage__title">Programa Herencia Viva</h2>
+                <p class="heritage__text">
+                    Trabajamos exclusivamente con maderas nativas certificadas FSC (algarrobo, quebracho y caldén) y acabados 100% naturales. Garantizamos 10 años de estructura y ofrecemos servicio de restauración para que cada mueble acompañe a generaciones.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__container container">
+            <div class="footer__info">
+                <h3 class="footer__brand">Hermanos Jota</h3>
+                <p>Casa Taller: Av. San Juan 2847, San Cristóbal, CABA.</p>
+                <p>Horarios: Lun a Vie 10:00–19:00 | Sáb 10:00–14:00</p>
+            </div>
+            <div class="footer__contact">
+                <h4>Contacto</h4>
+                <p>Email: <a href="mailto:info@hermanosjota.com.ar">info@hermanosjota.com.ar</a></p>
+                <p>WhatsApp: +54 11 4567-8900</p>
+            </div>
+            <div class="footer__copy">
+                <p>&copy; <span id="current-year"></span> Hermanos Jota. Calidez de taller para tu hogar.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
