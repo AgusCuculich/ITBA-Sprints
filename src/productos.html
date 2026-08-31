@@ -7,16 +7,16 @@
     <meta name="description" content="Descubrí nuestra colección de muebles artesanales. Diseño Mid-Century Modern en maderas nativas.">
     
     <!-- Precarga de fuentes para evitar FOIT (Manual de Marca 3.C) -->
-    <link rel="preload" as="font" href="src/assets/fonts/inter/inter-v-latin-400.woff2" type="font/woff2" crossorigin>
-    <link rel="preload" as="font" href="src/assets/fonts/playfair-display/playfair-display-v-latin-700.woff2" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="assets/fonts/inter/inter-v-latin-400.woff2" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="assets/fonts/playfair-display/playfair-display-v-latin-700.woff2" type="font/woff2" crossorigin>
     
-    <link rel="stylesheet" href="src/css/productos.css">
+    <link rel="stylesheet" href="css/productos.css">
 </head>
 <body>
     <header class="header-principal">
         <div class="contenedor header-contenido">
             <a href="index.html" class="logo-link">
-                <!-- FALTA: logo en formato .svg en src/assets/images/logo.svg -->
+                <!-- FALTA: logo en formato .svg en assets/images/logo.svg -->
                 <span class="logo-texto">Hermanos Jota</span>
             </a>
             <nav class="navegacion-principal">
@@ -51,6 +51,29 @@
         </section>
     </main>
 
-    <script type="module" src="src/js/productos.js"></script>
+    <footer class="footer-principal" id="contacto">
+        <div class="contenedor footer-contenido">
+            <div class="bloque-footer">
+                <h3 class="titulo-footer">Hermanos Jota</h3>
+                <p class="texto-footer">Muebles con alma y oficio desde 1960.</p>
+                <p class="texto-footer" id="anio-actual">- Más de 60 años de historia en la madera.</p>
+            </div>
+            <div class="bloque-footer">
+                <h3 class="titulo-footer">Casa Taller</h3>
+                <p class="texto-footer">Av. San Juan 2847, San Cristóbal, CABA.</p>
+                <p class="texto-footer">Lun a Vie: 10:00 - 19:00 | Sáb: 10:00 - 14:00</p>
+            </div>
+            <div class="bloque-footer">
+                <h3 class="titulo-footer">Contacto</h3>
+                <p class="texto-footer">info@hermanosjota.com.ar</p>
+                <p class="texto-footer">+54 11 4567-8900</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="texto-footer-bottom">&copy; 2026 Hermanos Jota. Todos los derechos reservados. Hecho con oficio.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/productos.js"></script>
 </body>
 </html>

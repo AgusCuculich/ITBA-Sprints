@@ -23,7 +23,7 @@ const calcularAnioHistoria = () => {
 
 // 4. Construcción HTML de las tarjetas
 const crearTarjetaProducto = (producto) => {
-    const urlImagen = `src/assets/images/${producto.imagen}`;
+    const urlImagen = `assets/images/${producto.imagen}`;
     // Requisito: dejar comentario si la imagen no existe
     const comentarioFaltaFoto = `<!-- FALTA: foto de ${producto.nombre}, plano general con luz cálida de tarde (${urlImagen}) -->`;
     
@@ -44,7 +44,7 @@ const crearTarjetaProducto = (producto) => {
                 <p class="detalle-producto"><strong>Medidas:</strong> ${producto.medidas}</p>
                 <p class="detalle-producto"><strong>Acabado:</strong> ${producto.acabado}</p>
                 <div class="contenedor-cta">
-                    <a href="producto.html?id=${producto.id}" class="btn-primario">Sumalo a tu hogar</a>
+                    <button type="button" class="btn-primario btn-sumar-hogar" data-id="${producto.id}">Sumalo a tu hogar</button>
                 </div>
             </div>
         </article>
@@ -120,6 +120,22 @@ const realizarScrollSuave = (elementoDestino) => {
 if (btnVerCatalogo && contenedorProductos) {
     btnVerCatalogo.addEventListener('click', () => {
         realizarScrollSuave(contenedorProductos);
+    });
+}
+
+// 10. Interacción: Guardar producto seleccionado en LocalStorage y navegar
+if (contenedorProductos) {
+    contenedorProductos.addEventListener('click', (evento) => {
+        const botonSumar = evento.target.closest('.btn-sumar-hogar');
+        if (!botonSumar) return;
+
+        const idProducto = botonSumar.dataset.id;
+        const productoSeleccionado = productos.find((prod) => prod.id === idProducto);
+
+        if (productoSeleccionado) {
+            localStorage.setItem('productoSeleccionado', JSON.stringify(productoSeleccionado));
+            window.location.href = 'producto.html';
+        }
     });
 }
 

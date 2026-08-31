@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Pieza - Hermanos Jota</title>
+    <meta name="description" content="Detalles, dimensiones y confección artesanal de nuestras piezas en maderas nativas argentinas. Hermanos Jota.">
+    
+    <!-- Precarga de fuentes para evitar FOIT (Manual de Marca 3.C) -->
+    <link rel="preload" as="font" href="assets/fonts/inter/inter-v-latin-400.woff2" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="assets/fonts/playfair-display/playfair-display-v-latin-700.woff2" type="font/woff2" crossorigin>
+    
+    <link rel="stylesheet" href="css/producto.css">
+</head>
+<body>
+
+    <main class="main-detalle-producto">
+        <div class="contenedor">
+            <!-- Migas de pan de navegación -->
+            <nav class="migas-de-pan" aria-label="Ruta de navegación">
+                <ul class="lista-migas">
+                    <li><a href="index.html" class="miga-link">Inicio</a></li>
+                    <li class="miga-separador">/</li>
+                    <li><a href="productos.html" class="miga-link">Catálogo</a></li>
+                    <li class="miga-separador">/</li>
+                    <li class="miga-actual" id="breadcrumb-producto-actual" aria-current="page">Detalle de Pieza</li>
+                </ul>
+            </nav>
+
+            <!-- Contenedor del producto inyectado dinámicamente -->
+            <section id="contenedor-detalle-producto" class="contenedor-detalle" aria-live="polite">
+                <p class="mensaje-carga">Cargando detalles de la pieza...</p>
+            </section>
+        </div>
+    </main>
+
+    <script type="module" src="js/producto.js"></script>
+</body>
+</html>

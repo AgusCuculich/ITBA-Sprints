@@ -1,0 +1,350 @@
+/* ==========================================================================
+   Importación de Estilos Globales y Base
+   ========================================================================== */
+@import url('styles.css');
+
+/* ==========================================================================
+   Estructura de Detalle de Producto (Estilo Editorial Mid-Century)
+   ========================================================================== */
+.main-detalle-producto {
+  padding: 2rem 0 5rem;
+  min-height: 70vh;
+}
+
+/* --------------------------------------------------------------------------
+   Migas de pan / Navegación secundaria
+   -------------------------------------------------------------------------- */
+.migas-de-pan {
+  margin-bottom: 2rem;
+}
+
+.lista-migas {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  flex-wrap: wrap;
+  color: var(--negro-carbon);
+}
+
+.miga-link {
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.miga-link:hover {
+  text-decoration: underline;
+}
+
+.miga-separador {
+  color: rgba(26, 26, 26, 0.4);
+}
+
+.miga-actual {
+  font-weight: 300;
+  color: var(--siena-tostado);
+}
+
+/* --------------------------------------------------------------------------
+   Grilla Principal de la Ficha de Producto
+   -------------------------------------------------------------------------- */
+.contenedor-detalle {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* --------------------------------------------------------------------------
+   Columna Visual (Fotografía del mueble y Badge)
+   -------------------------------------------------------------------------- */
+.columna-imagen-detalle {
+  position: relative;
+  background-color: rgba(196, 122, 109, 0.05);
+  border: 1px solid rgba(160, 82, 45, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
+.envoltura-imagen-grande {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.imagen-detalle-grande {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.12));
+  transition: transform 0.4s ease;
+}
+
+.imagen-detalle-grande:hover {
+  transform: scale(1.02);
+}
+
+.badge-sustentabilidad {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  background-color: var(--verde-salvia);
+  color: var(--negro-carbon);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.35rem 0.9rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* --------------------------------------------------------------------------
+   Columna de Información, Precios y Acciones
+   -------------------------------------------------------------------------- */
+.columna-info-detalle {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Bloque Superior: Título, Precio, Cuotas y Controles de Compra */
+.bloque-encabezado-producto {
+  border-bottom: 1px solid rgba(160, 82, 45, 0.2);
+  padding-bottom: 1.25rem;
+}
+
+.titulo-producto-detalle {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: 2.25rem;
+  color: var(--siena-tostado);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.precio-producto-detalle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--negro-carbon);
+}
+
+.cuotas-texto {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--verde-salvia);
+  margin-top: 0.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   Bloque de Contenido Adicional (Descripción y Especificaciones)
+   -------------------------------------------------------------------------- */
+.bloque-contenido-adicional {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   Descripción Editorial
+   -------------------------------------------------------------------------- */
+.descripcion-producto-detalle {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--negro-carbon);
+}
+
+/* --------------------------------------------------------------------------
+   Especificaciones Técnicas y Fabricación
+   -------------------------------------------------------------------------- */
+.seccion-especificaciones {
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(160, 82, 45, 0.15);
+  border-radius: 6px;
+  padding: 1.25rem;
+}
+
+.titulo-especificaciones {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--siena-tostado);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.lista-especificaciones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.item-especificacion {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.875rem;
+  border-bottom: 1px dashed rgba(160, 82, 45, 0.15);
+  padding-bottom: 0.4rem;
+}
+
+.item-especificacion:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.label-especificacion {
+  font-weight: 500;
+  color: var(--siena-tostado);
+}
+
+.valor-especificacion {
+  font-weight: 400;
+  text-align: right;
+}
+
+/* --------------------------------------------------------------------------
+   Controles de Compra (Contador + Botón CTA a la par)
+   -------------------------------------------------------------------------- */
+.bloque-acciones-compra {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+/* Selector numérico interactivo */
+.control-cantidad {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--siena-tostado);
+  border-radius: 4px;
+  background-color: var(--alabastro-calido);
+  overflow: hidden;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.btn-cantidad {
+  background: transparent;
+  border: none;
+  width: 40px;
+  height: 100%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--siena-tostado);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.btn-cantidad:hover {
+  background-color: rgba(160, 82, 45, 0.1);
+}
+
+.input-cantidad {
+  width: 44px;
+  text-align: center;
+  border: none;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--negro-carbon);
+}
+
+.input-cantidad:focus {
+  outline: none;
+}
+
+/* Botón CTA principal en la ficha de producto */
+.btn-compra-detalle {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 48px;
+  padding: 0 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   Estado de Error / Producto No Encontrado
+   -------------------------------------------------------------------------- */
+.mensaje-estado-detalle {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 1rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.mensaje-estado-detalle h2 {
+  font-family: 'Playfair Display', serif;
+  color: var(--siena-tostado);
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   Media Queries Responsive
+   ========================================================================== */
+@media (min-width: 48em) and (max-width: 63.99em) { /* 768px a 1023px - Tablet */
+  .contenedor-detalle {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .columna-info-detalle {
+    display: contents; /* Permite que el encabezado y el contenido adicional sean items directos del grid */
+  }
+
+  .bloque-encabezado-producto {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .bloque-contenido-adicional {
+    grid-column: 1 / -1; /* Ocupa ambas columnas (una sola columna ancha inferior) */
+    margin-top: 1rem;
+  }
+
+  .envoltura-imagen-grande {
+    aspect-ratio: 1 / 1;
+    padding: 2rem;
+  }
+
+  .titulo-producto-detalle {
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width: 64em) { /* 1024px+ - Desktop */
+  .contenedor-detalle {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4.5rem;
+  }
+
+  .envoltura-imagen-grande {
+    aspect-ratio: 1 / 1;
+    padding: 2.5rem;
+  }
+
+  .titulo-producto-detalle {
+    font-size: 2.75rem;
+  }
+}

@@ -99,7 +99,7 @@ ul {
    ========================================================================== */
 .contenedor {
   width: 90%;
-  max-width: 1200px;
+  max-width: 1366px;
   margin: 0 auto;
 }
 
@@ -155,22 +155,57 @@ ul {
    ========================================================================== */
 .btn-primario {
   font-family: 'Inter', sans-serif;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--alabastro-calido);
   background-color: var(--siena-tostado);
-  padding: 0.8rem 1.5rem;
+  padding: 1rem 1.5rem;
   border-radius: 4px;
   transition: background-color 0.3s ease;
   display: inline-block;
-  border: none;
+  border: 1px solid var(--siena-tostado);
   cursor: pointer;
 }
 
 .btn-primario:hover {
-  background-color: var(--negro-carbon);
+  background-color: transparent;
+  color: var(--siena-tostado);
+}
+
+/* ==========================================================================
+   Etiqueta Sustentable
+   ========================================================================== */
+.etiqueta-sustentable {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  background-color: var(--verde-salvia);
+  color: var(--alabastro-calido); 
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   Mensajes de Estado (Carga y Vacío)
+   ========================================================================== */
+.mensaje-carga,
+.mensaje-vacio {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--siena-tostado);
+  text-align: center;
+  padding: 3rem 1rem;
+  width: 100%;
+  grid-column: 1 / -1;
 }
 
 /* ==========================================================================
