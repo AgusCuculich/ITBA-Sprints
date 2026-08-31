@@ -35,14 +35,11 @@ const crearTarjetaProducto = (producto) => {
         <article class="tarjeta-producto">
             <div class="contenedor-imagen">
                 ${comentarioFaltaFoto}
-                <img src="${urlImagen}" alt="${producto.nombre} fabricado en ${producto.material}" class="imagen-producto" loading="lazy">
+                <img src="${urlImagen}" alt="${producto.nombre}" class="imagen-producto" loading="lazy">
                 ${etiquetaSustentable}
             </div>
             <div class="info-producto">
                 <h2 class="nombre-producto">${producto.nombre}</h2>
-                <p class="detalle-producto"><strong>Material:</strong> ${producto.material}</p>
-                <p class="detalle-producto"><strong>Medidas:</strong> ${producto.medidas}</p>
-                <p class="detalle-producto"><strong>Acabado:</strong> ${producto.acabado}</p>
                 <div class="contenedor-cta">
                     <button type="button" class="btn-primario btn-sumar-hogar" data-id="${producto.id}">Sumalo a tu hogar</button>
                 </div>
@@ -95,8 +92,9 @@ if (buscadorInput) {
         const terminoBusqueda = evento.target.value.toLowerCase().trim();
         
         const productosFiltrados = productos.filter((prod) => {
+            const material = (prod.especificaciones?.materiales || prod.especificaciones?.estructura || prod.material || '').toLowerCase();
             return prod.nombre.toLowerCase().includes(terminoBusqueda) || 
-                   prod.material.toLowerCase().includes(terminoBusqueda);
+                   material.includes(terminoBusqueda);
         });
         
         renderizarCatalogo(productosFiltrados);

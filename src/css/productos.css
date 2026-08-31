@@ -141,17 +141,11 @@
   color: var(--siena-tostado);
 }
 
-.detalle-producto {
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  font-size: 0.875rem;
-  color: var(--negro-carbon);
-  margin-bottom: 0.2rem;
-}
-
 .contenedor-cta {
   margin-top: auto;
   padding-top: 1rem;
+  display: flex;
+  justify-content: center;
 }
 
 /* ==========================================================================

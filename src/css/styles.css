@@ -256,6 +256,15 @@ ul {
 }
 
 /* ==========================================================================
+   Estilo texto seleccionado
+   ========================================================================== */
+
+::selection {
+  background-color: rgb(160, 82, 45, 0.6); /* Color de fondo del texto seleccionado */
+  color: var(--alabastro-calido);            /* Color de la letra */
+}
+
+/* ==========================================================================
    Media Queries Globales Comunes
    ========================================================================== */
 @media (min-width: 48em) { /* 768px - Tablet */

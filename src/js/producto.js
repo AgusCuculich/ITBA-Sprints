@@ -81,13 +81,48 @@ const renderizarDetalleProducto = (producto) => {
     const descripcionTexto = producto.descripcion || 
         'Pieza construida artesanalmente con ensamble tradicional en madera maciza seleccionada. Cada veta cuenta la historia del oficio familiar.';
 
+    // Generación dinámica de la lista de especificaciones técnicas
+    const renderizarEspecificaciones = () => {
+        if (!producto.especificaciones || typeof producto.especificaciones !== 'object') {
+            return '';
+        }
+
+        const items = Object.entries(producto.especificaciones)
+            .map(([clave, valor]) => {
+                // Formatear la clave de camelCase a Title Case / legible
+                const etiquetaLegible = clave
+                    .replace(/([A-Z])/g, ' $1')
+                    .replace(/^./, (str) => str.toUpperCase())
+                    .trim();
+
+                return `
+                    <div class="item-especificacion">
+                        <dt class="label-especificacion">${etiquetaLegible}:</dt>
+                        <dd class="valor-especificacion">${valor}</dd>
+                    </div>
+                `;
+            })
+            .join('');
+
+        return `
+            <section class="seccion-especificaciones" aria-label="Detalles de fabricación y especificaciones">
+                <h2>Especificaciones Técnicas</h2>
+                <dl class="lista-especificaciones">
+                    ${items}
+                </dl>
+            </section>
+        `;
+    };
+
+    const materialAlt = producto.especificaciones?.materiales || producto.especificaciones?.estructura || 'diseño exclusivo';
+
     // Inyección de la plantilla HTML en el DOM
     contenedorDetalle.innerHTML = `
         <!-- Columna Visual: Fotografía y Badge -->
         <div class="columna-imagen-detalle">
             <div class="envoltura-imagen-grande">
                 ${comentarioFaltaFoto}
-                <img src="${urlImagen}" alt="${producto.nombre} fabricado en ${producto.material}" class="imagen-detalle-grande" id="imagen-principal">
+                <img src="${urlImagen}" alt="${producto.nombre} - ${materialAlt}" class="imagen-detalle-grande" id="imagen-principal">
                 ${badgeSustentable}
             </div>
         </div>
@@ -118,24 +153,8 @@ const renderizarDetalleProducto = (producto) => {
                 <!-- Narrativa y descripción de la pieza -->
                 <p class="descripcion-producto-detalle">${descripcionTexto}</p>
 
-                <!-- Especificaciones Técnicas y Materiales -->
-                <section class="seccion-especificaciones" aria-label="Detalles de fabricación y medidas">
-                    <h2 class="titulo-especificaciones">Especificaciones de Fabricación</h2>
-                    <dl class="lista-especificaciones">
-                        <div class="item-especificacion">
-                            <dt class="label-especificacion">Madera / Material:</dt>
-                            <dd class="valor-especificacion">${producto.material}</dd>
-                        </div>
-                        <div class="item-especificacion">
-                            <dt class="label-especificacion">Dimensiones:</dt>
-                            <dd class="valor-especificacion">${producto.medidas}</dd>
-                        </div>
-                        <div class="item-especificacion">
-                            <dt class="label-especificacion">Acabado artesanal:</dt>
-                            <dd class="valor-especificacion">${producto.acabado}</dd>
-                        </div>
-                    </dl>
-                </section>
+                <!-- Especificaciones Técnicas y Materiales dinámicos -->
+                ${renderizarEspecificaciones()}
             </div>
         </div>
     `;

@@ -7,16 +7,27 @@
    Estructura de Detalle de Producto (Estilo Editorial Mid-Century)
    ========================================================================== */
 .main-detalle-producto {
-  padding: 2rem 0 5rem;
-  min-height: 70vh;
+  width: 90%;
+  max-width: 1366px;
+  margin: 0 auto;
+  padding: 2.5rem 0 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--siena-tostado);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 /* --------------------------------------------------------------------------
    Migas de pan / Navegación secundaria
    -------------------------------------------------------------------------- */
-.migas-de-pan {
-  margin-bottom: 2rem;
-}
 
 .lista-migas {
   display: flex;
@@ -170,16 +181,9 @@
   border: 1px solid rgba(160, 82, 45, 0.15);
   border-radius: 6px;
   padding: 1.25rem;
-}
-
-.titulo-especificaciones {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--siena-tostado);
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
 }
 
 .lista-especificaciones {
@@ -299,44 +303,111 @@
 }
 
 /* ==========================================================================
+   Secciones de Acordeón (Sustentabilidad y Herencia Viva)
+   ========================================================================== */
+.seccion-acordeones {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.acordeon-item {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(160, 82, 45, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.acordeon-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+}
+
+.acordeon-icono {
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid var(--siena-tostado);
+  border-bottom: 2px solid var(--siena-tostado);
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+  margin-right: 0.25rem;
+}
+
+.acordeon-item[open] .acordeon-icono {
+  transform: rotate(-135deg);
+}
+
+.acordeon-contenido {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  color: var(--negro-carbon);
+  line-height: 1.65;
+}
+
+.acordeon-intro {
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+  color: rgba(26, 26, 26, 0.85);
+}
+
+.acordeon-subtitulo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--siena-tostado);
+  margin: 1.25rem 0 0.75rem;
+}
+
+.acordeon-lista {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.acordeon-lista li strong {
+  color: var(--siena-tostado);
+}
+
+/* Tabla de acabados */
+.tabla-acabados-wrapper {
+  overflow-x: auto;
+  margin-top: 0.75rem;
+}
+
+.tabla-acordeon {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  text-align: left;
+}
+
+.tabla-acordeon th,
+.tabla-acordeon td {
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid rgba(160, 82, 45, 0.15);
+}
+
+.tabla-acordeon th {
+  font-weight: 700;
+  color: var(--siena-tostado);
+  background-color: rgba(160, 82, 45, 0.05);
+}
+
+/* ==========================================================================
    Media Queries Responsive
    ========================================================================== */
-@media (min-width: 48em) and (max-width: 63.99em) { /* 768px a 1023px - Tablet */
-  .contenedor-detalle {
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
-  }
-
-  .columna-info-detalle {
-    display: contents; /* Permite que el encabezado y el contenido adicional sean items directos del grid */
-  }
-
-  .bloque-encabezado-producto {
-    grid-column: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .bloque-contenido-adicional {
-    grid-column: 1 / -1; /* Ocupa ambas columnas (una sola columna ancha inferior) */
-    margin-top: 1rem;
-  }
-
-  .envoltura-imagen-grande {
-    aspect-ratio: 1 / 1;
-    padding: 2rem;
-  }
-
-  .titulo-producto-detalle {
-    font-size: 2.25rem;
-  }
-}
 
 @media (min-width: 64em) { /* 1024px+ - Desktop */
   .contenedor-detalle {
     grid-template-columns: 1.1fr 0.9fr;
-    gap: 4.5rem;
+    gap: 2.5rem;
   }
 
   .envoltura-imagen-grande {
