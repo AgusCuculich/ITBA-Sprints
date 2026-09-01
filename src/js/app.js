@@ -1,36 +1,11 @@
-// Array local de productos (Simulación de base de datos)
-const productosDB = [
-  {
-    id: 1,
-    nombre: "Sillón Algarrobo Taller",
-    precio: 145000,
-    imagen: "assets/images/sillon-algarrobo.jpg",
-    descripcion: "Nacido de una veta recuperada con acabado en aceite de lino.",
-    destacado: true
-  },
-  {
-    id: 2,
-    nombre: "Mesa Centro Caldén",
-    precio: 98000,
-    imagen: "assets/images/mesa-calden.jpg",
-    descripcion: "Líneas orgánicas inspiradas en el diseño Mid-Century de los 60.",
-    destacado: true
-  },
-  {
-    id: 3,
-    nombre: "Silla Quebracho",
-    precio: 62000,
-    imagen: "assets/images/silla-quebracho.jpg",
-    descripcion: "Estructura firme en madera nativa con garantía de 10 años.",
-    destacado: true
-  }
-];
+import { productos } from './datos-productos.js';
 
 // Función para simular petición asíncrona (Async / Await)
 function obtenerProductosDestacados() {
   return new Promise((resolve) => {
     setTimeout(() => {
-      const destacados = productosDB.filter(p => p.destacado);
+      // Tomamos los productos de la lista real que tienen sustentable: true (o los primeros 3)
+      const destacados = productos.filter(p => p.sustentable).slice(0, 3);
       resolve(destacados);
     }, 800); // Simula retardo de red de 800ms
   });
@@ -50,20 +25,19 @@ async function cargarInicio() {
   if (!containerGrid) return;
 
   try {
-    const productos = await obtenerProductosDestacados();
+    const productosDestacados = await obtenerProductosDestacados();
     
     // Ocultar mensaje de carga
     if (loadingState) loadingState.style.display = "none";
 
-    if (productos.length === 0) {
+    if (productosDestacados.length === 0) {
       containerGrid.innerHTML = "<p>Están esperando en el taller. Próximamente sumaremos nuevas piezas.</p>";
       return;
     }
 
-    // Insertar tarjetas en el DOM
-    containerGrid.innerHTML = productos.map(prod => `
+    // Insertar tarjetas en el DOM con las propiedades reales de datos-productos.js
+    containerGrid.innerHTML = productosDestacados.map(prod => `
       <article class="card">
-        <!-- Comentario: si no existe la foto local, usa el logo como fallback -->
         <img src="${prod.imagen}" alt="${prod.nombre}" class="card__img" onerror="this.src='assets/images/logo.svg';">
         <div class="card__body">
           <h3 class="card__title">${prod.nombre}</h3>
