@@ -1,0 +1,168 @@
+/* ==========================================================================
+   Importación de Estilos Globales y Base
+   ========================================================================== */
+@import url('styles.css');
+
+/* ==========================================================================
+   Secciones y Hero (Específico de Catálogo)
+   ========================================================================== */
+.main-catalogo {
+  padding-bottom: 4rem;
+}
+
+.hero-catalogo {
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.titulo-principal {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: var(--siena-tostado);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.texto-hero {
+  font-size: 1.125rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-hero {
+  margin-top: 2rem;
+}
+
+/* ==========================================================================
+   Buscador (Sin selectores de atributos)
+   ========================================================================== */
+.seccion-busqueda {
+  padding: 1rem 0 3rem;
+}
+
+.busqueda-contenido {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.label-buscador {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--siena-tostado);
+}
+
+.input-buscador {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--siena-tostado);
+  background-color: transparent;
+  color: var(--negro-carbon);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+.input-buscador:focus {
+  outline: none;
+  border-color: var(--negro-carbon);
+}
+
+/* ==========================================================================
+   Grilla de Productos
+   ========================================================================== */
+.seccion-productos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  min-height: 400px;
+}
+
+/* ==========================================================================
+   Tarjeta de Producto
+   ========================================================================== */
+.tarjeta-producto {
+  background-color: var(--alabastro-calido);
+  border: 1px solid rgba(160, 82, 45, 0.15); /* Borde sutil siena tostado */
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta-producto:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.contenedor-imagen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: rgba(196, 122, 109, 0.05);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagen-producto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.tarjeta-producto:hover .imagen-producto {
+  transform: scale(1.03);
+}
+
+/* ==========================================================================
+   Información del Producto
+   ========================================================================== */
+.info-producto {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 0.75rem;
+}
+
+.nombre-producto {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--siena-tostado);
+}
+
+.contenedor-cta {
+  margin-top: auto;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   Media Queries (Específicos de Catálogo)
+   ========================================================================== */
+@media (min-width: 48em) { /* 768px - Tablet */
+  .seccion-productos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64em) { /* 1024px - Desktop */
+  .seccion-productos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .titulo-principal {
+    font-size: 3rem;
+  }
+}

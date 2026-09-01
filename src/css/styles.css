@@ -1,0 +1,528 @@
+/* ==========================================================================
+   Variables de Color (Manual de Marca - 2026)
+   ========================================================================== */
+:root {
+  --siena-tostado: #A0522D;    /* Color de marca principal, títulos principales */
+  --verde-salvia: #87A96B;     /* Acento secundario, destaca sustentabilidad */
+  --alabastro-calido: #F5E6D3; /* Fondo principal de la web, secciones y fotos */
+  --vara-de-oro: #D4A437;      /* Detalles premium y acentos refinados */
+  --rosa-polvoriento: #C47A6D; /* Acentos suaves y matices delicados */
+  --negro-carbon: #1A1A1A;     /* Color del texto principal para máxima legibilidad */
+}
+
+/* ==========================================================================
+   Fuentes Locales
+   ========================================================================== */
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/inter/inter-v-latin-300.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/inter/inter-v-latin-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/inter/inter-v-latin-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/inter/inter-v-latin-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../assets/fonts/playfair-display/playfair-display-v-latin-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../assets/fonts/playfair-display/playfair-display-v-latin-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==========================================================================
+   Reseteo Básico
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--alabastro-calido);
+  color: var(--negro-carbon);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ==========================================================================
+   Estructura Principal Común
+   ========================================================================== */
+.contenedor {
+  width: 90%;
+  max-width: 1366px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   Header y Navegación
+   ========================================================================== */
+.header-principal {
+  background-color: var(--alabastro-calido);
+  border-bottom: 1px solid rgba(160, 82, 45, 0.3); /* Siena tostado transparente */
+  padding: 1.5rem 0;
+}
+
+.header-contenido {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.logo-link {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--siena-tostado);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.lista-nav {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.link-nav {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--negro-carbon);
+  font-size: 0.875rem;
+  transition: color 0.3s ease;
+}
+
+.link-nav:hover,
+.link-nav.activo {
+  color: var(--siena-tostado);
+}
+
+/* ==========================================================================
+   Botones y CTAs Comunes
+   ========================================================================== */
+.btn-primario {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--alabastro-calido);
+  background-color: var(--siena-tostado);
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  border: 1px solid var(--siena-tostado);
+  cursor: pointer;
+}
+
+.btn-primario:hover {
+  background-color: transparent;
+  color: var(--siena-tostado);
+}
+
+/* ==========================================================================
+   Etiqueta Sustentable
+   ========================================================================== */
+.etiqueta-sustentable {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  background-color: var(--verde-salvia);
+  color: var(--alabastro-calido); 
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   Mensajes de Estado (Carga y Vacío)
+   ========================================================================== */
+.mensaje-carga,
+.mensaje-vacio {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--siena-tostado);
+  text-align: center;
+  padding: 3rem 1rem;
+  width: 100%;
+  grid-column: 1 / -1;
+}
+
+/* ==========================================================================
+   Footer Común
+   ========================================================================== */
+.footer-principal {
+  background-color: var(--siena-tostado);
+  color: var(--alabastro-calido);
+  padding: 3rem 0 1rem;
+  margin-top: 4rem;
+}
+
+.footer-contenido {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.titulo-footer {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--alabastro-calido);
+}
+
+.texto-footer {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+  color: var(--alabastro-calido);
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid rgba(245, 230, 211, 0.2);
+  padding-top: 1.5rem;
+}
+
+.texto-footer-bottom {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: var(--alabastro-calido);
+}
+
+/* ==========================================================================
+   Estilo texto seleccionado
+   ========================================================================== */
+
+::selection {
+  background-color: rgb(160, 82, 45, 0.6); /* Color de fondo del texto seleccionado */
+  color: var(--alabastro-calido);            /* Color de la letra */
+}
+
+/* ==========================================================================
+   Media Queries Globales Comunes
+   ========================================================================== */
+@media (min-width: 48em) { /* 768px - Tablet */
+  .header-contenido {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .footer-contenido {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+/* Variables del Manual de Marca (2026) */
+:root {
+    --siena-tostado: #A0522D;
+    --verde-salvia: #87A96B;
+    --alabastro-calido: #F5E6D3;
+    --vara-de-oro: #D4A437;
+    --rosa-polvoriento: #C47A6D;
+    --negro-carbon: #1A1A1A;
+    --font-primary: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-secondary: 'Playfair Display', Georgia, serif;
+}
+
+/* Reset y Base */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-primary);
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--negro-carbon);
+    background-color: var(--alabastro-calido);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Tipografías y Encabezados */
+h1, h2, h3 {
+    font-family: var(--font-secondary);
+    color: var(--siena-tostado);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+/* Header */
+.header {
+    background-color: var(--alabastro-calido);
+    border-bottom: 1px solid rgba(160, 82, 45, 0.2);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__list {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: var(--negro-carbon);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+}
+
+    .nav__link--active, .nav__link:hover {
+        color: var(--siena-tostado);
+        border-bottom: 2px solid var(--siena-tostado);
+    }
+
+.header__cart-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero {
+    padding: 4rem 0;
+    text-align: center;
+    background-color: rgba(160, 82, 45, 0.05);
+}
+
+.hero__title {
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+}
+
+.hero__subtitle {
+    max-width: 650px;
+    margin: 0 auto 2rem auto;
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-primary);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn--primary {
+    background-color: var(--siena-tostado);
+    color: var(--alabastro-calido);
+}
+
+    .btn--primary:hover {
+        background-color: #804022;
+    }
+
+/* Productos Destacados (Grid Mobile-First) */
+.featured {
+    padding: 4rem 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.loading-state {
+    text-align: center;
+    padding: 2rem;
+    font-style: italic;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 600px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Card de Producto */
+.card {
+    background: #ffffff;
+    border: 1px solid rgba(160, 82, 45, 0.15);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.card__img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.card__body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card__title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.card__description {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+.card__price {
+    font-weight: 700;
+    color: var(--siena-tostado);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.card__link {
+    margin-top: auto;
+    align-self: start;
+}
+
+/* Herencia Viva y Footer */
+.heritage {
+    background-color: var(--verde-salvia);
+    color: var(--negro-carbon);
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.heritage__title {
+    color: var(--negro-carbon);
+    margin-bottom: 1rem;
+}
+
+.footer {
+    background-color: var(--negro-carbon);
+    color: var(--alabastro-calido);
+    padding: 3rem 0 1.5rem 0;
+    font-size: 0.875rem;
+}
+
+    .footer a {
+        color: var(--alabastro-calido);
+    }
+
+.footer__container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.footer__copy {
+    border-top: 1px solid rgba(245, 230, 211, 0.2);
+    padding-top: 1rem;
+    width: 100%;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .footer__container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+}
