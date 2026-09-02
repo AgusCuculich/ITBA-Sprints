@@ -354,42 +354,126 @@ ul {
 }
 
 /* ==========================================================================
-   Footer
+   Footer (Contacto y créditos)
    ========================================================================== */
-/* .footer-principal {
-  background-color: var(--siena-tostado);
-  color: var(--alabastro-calido);
-  padding: 3rem 0 1rem;
+.footer-principal {
+  background-color: var(--alabastro-calido);
+  color: var(--negro-carbon);
+  padding: 3rem 0 1.5rem;
   margin-top: 4rem;
+  border-top: 1px solid rgba(160, 82, 45, 0.3);
+  scroll-margin-top: 1rem;
+}
+
+.titulo-contacto-footer {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--siena-tostado);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  padding-bottom: 0.75rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--siena-tostado);
 }
 
 .footer-contenido {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  margin-bottom: 2rem;
-  text-align: center;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+  text-align: left;
+}
+
+.bloque-footer {
+  flex: 1;
+  min-width: 0;
 }
 
 .titulo-footer {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
   margin-bottom: 1rem;
-  color: var(--alabastro-calido);
+  color: var(--negro-carbon);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .texto-footer {
   font-family: 'Inter', sans-serif;
   font-size: 0.875rem;
-  font-weight: 300;
-  margin-bottom: 0.5rem;
-  color: var(--alabastro-calido);
+  font-weight: 400;
+  line-height: 1.6;
+  margin-bottom: 0.35rem;
+  color: var(--negro-carbon);
+}
+
+.texto-intro-showroom {
+  margin-bottom: 1.25rem;
+  max-width: 36rem;
+}
+
+.tarjeta-casa-taller {
+  padding: 1.5rem 1.5rem 1.5rem 1.75rem;
+  border-left: 4px solid var(--siena-tostado);
+  background: linear-gradient(90deg, rgba(160, 82, 45, 0.08) 0%, rgba(245, 230, 211, 0) 100%);
+}
+
+.nombre-casa-taller {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--negro-carbon);
+  margin-bottom: 0.75rem;
+}
+
+.direccion-casa-taller {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--negro-carbon);
+  margin-bottom: 1rem;
+}
+
+.lista-contacto-digital {
+  border-top: 1px solid rgba(160, 82, 45, 0.15);
+}
+
+.item-contacto-digital {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(160, 82, 45, 0.15);
+}
+
+.etiqueta-contacto-digital {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  color: var(--negro-carbon);
+}
+
+.enlace-contacto-digital {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: var(--negro-carbon);
+  transition: color 0.3s ease;
+}
+
+.enlace-contacto-digital:hover,
+.enlace-contacto-digital:focus-visible {
+  color: var(--siena-tostado);
 }
 
 .footer-bottom {
   text-align: center;
-  border-top: 1px solid rgba(245, 230, 211, 0.2);
+  border-top: 1px solid rgba(160, 82, 45, 0.3);
   padding-top: 1.5rem;
 }
 
@@ -397,8 +481,9 @@ ul {
   font-family: 'Inter', sans-serif;
   font-size: 0.75rem;
   font-weight: 300;
-  color: var(--alabastro-calido);
-} */
+  letter-spacing: 0.02em;
+  color: var(--negro-carbon);
+}
 
 
 /* ==========================================================================
@@ -419,6 +504,19 @@ ul {
     flex-direction: row;
     justify-content: space-between;
     text-align: left;
+    gap: 4rem;
+  }
+
+  .titulo-contacto-footer {
+    font-size: 1.75rem;
+    text-align: left;
+  }
+
+  .item-contacto-digital {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1.5rem;
   }
 }
 
