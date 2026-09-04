@@ -1,0 +1,225 @@
+:root {
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    --color-brand: #a6532b;
+    --color-brand-hover: #823d1d;
+    --color-bg-main: #f3ede2;
+    --color-card-bg: #ece3d4; /* Fondo crema para las tarjetas */
+    --color-card-border: #e0d4c1;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg-main);
+    color: #333333;
+    margin: 0;
+}
+
+/* HEADER */
+.header {
+    padding: 1.5rem 0;
+    background-color: var(--color-bg-main);
+    border-bottom: 1px solid rgba(166, 83, 43, 0.15);
+}
+
+.header__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.header__logo {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--color-brand);
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.header__nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: #333333;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+    .nav__link:hover,
+    .nav__link--active {
+        color: var(--color-brand);
+        font-weight: 600;
+    }
+
+.header__cart {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* HERO */
+.hero {
+    padding: 4rem 1.5rem 3rem;
+    text-align: center;
+}
+
+.hero__content {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.hero__title {
+    font-family: var(--font-heading);
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--color-brand);
+    margin-bottom: 1.2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+.hero__subtitle {
+    font-size: 1.05rem;
+    color: #444444;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.btn-main {
+    display: inline-block;
+    padding: 0.9rem 2rem;
+    background-color: var(--color-brand);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    transition: background-color 0.2s ease;
+}
+
+    .btn-main:hover {
+        background-color: var(--color-brand-hover);
+    }
+
+/* DESTACADOS Y CARDS CREMA */
+.featured {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.featured__header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.featured__title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: var(--color-brand);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.featured__subtitle {
+    color: #555555;
+    font-size: 0.95rem;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.product-card {
+    background-color: var(--color-card-bg); /* Fondo cremita */
+    border: 1px solid var(--color-card-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.product-card__tag {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: #729b6f;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.3rem 0.6rem;
+    border-radius: 12px;
+    text-transform: uppercase;
+}
+
+.product-card__img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    mix-blend-mode: multiply; /* Para que las imágenes con fondo blanco se integren con el tono crema */
+}
+
+.product-card__title {
+    font-family: var(--font-heading);
+    color: var(--color-brand);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.product-card__desc {
+    font-size: 0.85rem;
+    color: #555555;
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+    flex-grow: 1;
+}
+
+.btn-card {
+    display: inline-block;
+    text-align: center;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--color-brand);
+    color: var(--color-brand);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.88rem;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+    background-color: transparent;
+}
+
+    .btn-card:hover {
+        background-color: var(--color-brand);
+        color: #ffffff;
+    }
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    color: #666666;
+    font-size: 0.85rem;
+    margin-top: 4rem;
+}
