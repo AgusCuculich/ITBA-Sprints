@@ -23,20 +23,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     return `
-      <article class="product-card">
-        ${prod.categoria ? `<span class="product-card__tag">${prod.categoria}</span>` : ''}
-        <img 
-          src="${rutaImagen}" 
-          alt="${prod.nombre}" 
-          class="product-card__img" 
-          onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&q=80';"
-        >
-        <div class="product-card__content">
-          <h3 class="product-card__title">${prod.nombre}</h3>
-          <p class="product-card__desc">${prod.descripcion || ''}</p>
-          <a href="producto.html?id=${prod.id}" class="btn-card">VER DETALLE</a>
-        </div>
-      </article>
+        <article class="tarjeta-producto">
+            <div class="contenedor-imagen">
+                ${comentarioFaltaFoto}
+                <img src="${urlImagen}" alt="${producto.nombre}" class="imagen-producto" loading="lazy">
+                ${etiquetaSustentable}
+            </div>
+            <div class="info-producto">
+                <h2 class="nombre-producto">${producto.nombre}</h2>
+                <div class="contenedor-cta">
+                    <button type="button" class="btn-primario btn-sumar-hogar" data-id="${producto.id}">Sumalo a tu hogar</button>
+                </div>
+            </div>
+        </article>
     `;
   }).join('');
 });

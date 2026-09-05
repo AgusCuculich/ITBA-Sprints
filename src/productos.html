@@ -10,24 +10,14 @@
     <link rel="preload" as="font" href="assets/fonts/inter/inter-v-latin-400.woff2" type="font/woff2" crossorigin>
     <link rel="preload" as="font" href="assets/fonts/playfair-display/playfair-display-v-latin-700.woff2" type="font/woff2" crossorigin>
     
+    <!-- css -->
     <link rel="stylesheet" href="css/productos.css">
+    <!-- js -->
+    <script src="./js/hj-header.js" defer></script>
 </head>
 <body>
-    <header class="header-principal">
-        <div class="contenedor header-contenido">
-            <a href="index.html" class="logo-link">
-                <!-- FALTA: logo en formato .svg en assets/images/logo.svg -->
-                <span class="logo-texto">Hermanos Jota</span>
-            </a>
-            <nav class="navegacion-principal">
-                <ul class="lista-nav">
-                    <li><a href="index.html" class="link-nav">Taller</a></li>
-                    <li><a href="productos.html" class="link-nav activo">Catálogo</a></li>
-                    <li><a href="#contacto" class="link-nav">Contacto</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+
+    <hj-header></hj-header>
 
     <main class="main-catalogo">
         <section class="hero-catalogo">

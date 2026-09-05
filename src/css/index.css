@@ -1,72 +1,7 @@
-:root {
-    --font-heading: 'Playfair Display', Georgia, serif;
-    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-    --color-brand: #a6532b;
-    --color-brand-hover: #823d1d;
-    --color-bg-main: #f3ede2;
-    --color-card-bg: #ece3d4; /* Fondo crema para las tarjetas */
-    --color-card-border: #e0d4c1;
-}
-
-body {
-    font-family: var(--font-body);
-    background-color: var(--color-bg-main);
-    color: #333333;
-    margin: 0;
-}
-
-/* HEADER */
-.header {
-    padding: 1.5rem 0;
-    background-color: var(--color-bg-main);
-    border-bottom: 1px solid rgba(166, 83, 43, 0.15);
-}
-
-.header__container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
-
-.header__logo {
-    font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: 1.5rem;
-    color: var(--color-brand);
-    text-decoration: none;
-    letter-spacing: 2px;
-}
-
-.header__nav {
-    display: flex;
-    gap: 2rem;
-}
-
-.nav__link {
-    text-decoration: none;
-    color: #333333;
-    font-size: 0.85rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    font-weight: 500;
-}
-
-    .nav__link:hover,
-    .nav__link--active {
-        color: var(--color-brand);
-        font-weight: 600;
-    }
-
-.header__cart {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-weight: 600;
-    cursor: pointer;
-}
+/* ==========================================================================
+   Importación de Estilos Globales y Base
+   ========================================================================== */
+@import url('styles.css');
 
 /* HERO */
 .hero {
@@ -111,9 +46,9 @@ body {
     transition: background-color 0.2s ease;
 }
 
-    .btn-main:hover {
-        background-color: var(--color-brand-hover);
-    }
+.btn-main:hover {
+    background-color: var(--color-brand-hover);
+}
 
 /* DESTACADOS Y CARDS CREMA */
 .featured {
@@ -210,10 +145,10 @@ body {
     background-color: transparent;
 }
 
-    .btn-card:hover {
-        background-color: var(--color-brand);
-        color: #ffffff;
-    }
+.btn-card:hover {
+    background-color: var(--color-brand);
+    color: #ffffff;
+}
 
 /* FOOTER */
 .footer {

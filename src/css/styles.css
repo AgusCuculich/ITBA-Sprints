@@ -8,6 +8,21 @@
     --vara-de-oro: #D4A437; /* Detalles premium y acentos refinados */
     --rosa-polvoriento: #C47A6D; /* Acentos suaves y matices delicados */
     --negro-carbon: #1A1A1A; /* Color del texto principal para máxima legibilidad */
+
+    /* Variables de espaciados */
+    --espaciado-interno: 1rem;
+    --espaciado-secciones: 2rem;
+
+    /*  Variables radius btn  */
+    --btn-radius: 0.25rem;
+
+    /*  Variables de texto   */
+    --h1: 3rem;
+    --h2: 2.25rem;
+    --h3: 1.75rem;
+    --h4: 1.25rem;
+    --text: 1rem;
+    --small-text: 14px;
 }
 
 /* ==========================================================================
@@ -77,6 +92,31 @@ body {
     font-weight: 400;
     font-size: 16px;
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaciado-secciones);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+h1 {
+    font-size: var(--h1);
+}
+
+h2 {
+    font-size: var(--h2);
+}
+
+h3 {
+    font-size: var(--h3);
+}
+
+h4 {
+    font-size: var(--h4);
 }
 
 img {
@@ -94,6 +134,15 @@ ul {
     list-style: none;
 }
 
+main{
+    width: 90%;
+    max-width: 1366px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaciado-secciones);
+}
+
 /* ==========================================================================
    Estructura Principal Común
    ========================================================================== */
@@ -107,72 +156,62 @@ ul {
    Header y Navegación
    ========================================================================== */
 .header-principal {
-    background-color: var(--alabastro-calido);
     border-bottom: 1px solid rgba(160, 82, 45, 0.3); /* Siena tostado transparente */
-    padding: 1.5rem 0;
+    padding: var(--espaciado-interno);
+    font-weight: 500px;
 }
 
 .header-contenido {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    justify-content: space-around;
 }
 
-.logo-link {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--siena-tostado);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+.img-logo {
+    height: 48px;
+    width: 48px;
 }
 
 .lista-nav {
     display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
+    gap: var(--espaciado-interno);
 }
 
 .link-nav {
-    font-family: 'Inter', sans-serif;
     font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--negro-carbon);
-    font-size: 0.875rem;
     transition: color 0.3s ease;
 }
 
-    .link-nav:hover,
-    .link-nav.activo {
-        color: var(--siena-tostado);
-    }
+.link-nav:hover, .link-nav.activo {
+    text-decoration: underline;
+    text-underline-offset: 0.25rem; /* Ajusta este valor para dar más o menos espacio */
+}
+
+.link-nav.activo {
+    color: var(--siena-tostado);
+}
 
 /* ==========================================================================
    Botones y CTAs Comunes
    ========================================================================== */
 .btn-primario {
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    font-size: 0.875rem;
+    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--alabastro-calido);
     background-color: var(--siena-tostado);
     padding: 1rem 1.5rem;
-    border-radius: 4px;
+    border-radius: var(--btn-radius);
     transition: background-color 0.3s ease;
     display: inline-block;
     border: 1px solid var(--siena-tostado);
     cursor: pointer;
 }
 
-    .btn-primario:hover {
-        background-color: transparent;
-        color: var(--siena-tostado);
-    }
+.btn-primario:hover {
+    background-color: transparent;
+    color: var(--siena-tostado);
+}
 
 /* ==========================================================================
    Etiqueta Sustentable
