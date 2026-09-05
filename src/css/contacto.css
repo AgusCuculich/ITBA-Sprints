@@ -1,0 +1,222 @@
+/* ==========================================================================
+   Importación de Estilos Globales y Base (Hermanos Jota)
+   ========================================================================== */
+@import url('styles.css');
+
+/* ==========================================================================
+   Planilla Flotante y Overlay Semitransparente
+   ========================================================================== */
+.modal-contacto {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.modal-contacto--oculto {
+  display: none !important;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Overlay semitransparente requerido */
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  z-index: 10001;
+}
+
+/* ==========================================================================
+   Tarjeta Centrada de Contacto (.tarjeta-contacto)
+   ========================================================================== */
+.tarjeta-contacto {
+  position: relative;
+  z-index: 10002; /* Se ubica por encima del overlay semitransparente */
+  background-color: #A0522D; /* Siena Tostado */
+  border-radius: 6px;
+  padding: 2.2rem 2rem 2rem;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  animation: aparicionModal 0.25s ease-out forwards;
+}
+
+@keyframes aparicionModal {
+  from {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tarjeta-contacto {
+    animation: none;
+  }
+}
+
+/* ==========================================================================
+   Botón Cerrar ("X")
+   ========================================================================== */
+.btn-cerrar-contacto {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.9rem;
+  background: transparent;
+  border: none;
+  color: #F5E6D3; /* Alabastro Cálido */
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-cerrar-contacto:hover {
+  color: #FFFFFF;
+  transform: scale(1.15);
+}
+
+.btn-cerrar-contacto:focus-visible {
+  outline: 2px solid #D4A437;
+}
+
+/* ==========================================================================
+   Campos y Etiquetas
+   ========================================================================== */
+.campo-grupo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.15rem;
+}
+
+.label-contacto {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #F5E6D3; /* Alabastro Cálido */
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.input-contacto,
+.textarea-contacto {
+  width: 100%;
+  background-color: #F5E6D3; /* Alabastro Cálido */
+  border: 1px solid rgba(135, 169, 107, 0.4); /* Verde Salvia */
+  border-radius: 4px;
+  padding: 0.65rem 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: var(--negro-carbon);
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-contacto:focus,
+.textarea-contacto:focus {
+  border-color: #D4A437; /* Vara de Oro */
+  box-shadow: 0 0 0 2px rgba(212, 164, 55, 0.4);
+}
+
+.input-contacto.campo-error,
+.textarea-contacto.campo-error {
+  border-color: #C47A6D; /* Rosa Polvoriento */
+  box-shadow: 0 0 0 2px rgba(196, 122, 109, 0.45);
+}
+
+.textarea-contacto {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* ==========================================================================
+   Botón Enviar
+   ========================================================================== */
+.btn-enviar-contacto {
+  width: 100%;
+  background-color: #D4A437; /* Vara de Oro */
+  color: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-enviar-contacto:hover {
+  background-color: #8C4422; /* Siena Tostado oscuro en hover */
+}
+
+.btn-enviar-contacto:active {
+  transform: scale(0.99);
+}
+
+/* ==========================================================================
+   Mensajes de Error y Avisos de Estado
+   ========================================================================== */
+.error-mensaje {
+  display: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #F5E6D3; /* Alabastro Cálido para alta legibilidad sobre Siena Tostado */
+  margin-top: 0.35rem;
+  line-height: 1.3;
+}
+
+.error-mensaje.visible {
+  display: block;
+}
+
+.aviso-contacto {
+  display: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  padding: 0.85rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.25rem;
+  line-height: 1.4;
+}
+
+.aviso-contacto.aviso-error {
+  display: block;
+  background-color: rgba(196, 122, 109, 0.25); /* Rosa Polvoriento */
+  border: 1px solid #C47A6D;
+  color: #FFFFFF;
+}
+
+.aviso-contacto.aviso-exito {
+  display: block;
+  background-color: rgba(135, 169, 107, 0.25); /* Verde Salvia */
+  border: 1px solid #87A96B;
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   Media Queries Responsivas
+   ========================================================================== */
+@media (max-width: 480px) {
+  .tarjeta-contacto {
+    padding: 1.8rem 1.2rem 1.5rem;
+  }
+}

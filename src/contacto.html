@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo y Contacto - Hermanos Jota</title>
+    <meta name="description" content="Descubrí nuestra colección de muebles artesanales y contactate con nuestro taller. Hermanos Jota.">
+    
+    <!-- Precarga de fuentes para evitar FOIT (Manual de Marca 3.C) -->
+    <link rel="preload" as="font" href="assets/fonts/inter/inter-v-latin-400.woff2" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="assets/fonts/playfair-display/playfair-display-v-latin-700.woff2" type="font/woff2" crossorigin>
+    
+    <link rel="stylesheet" href="css/productos.css">
+    <link rel="stylesheet" href="css/contacto.css">
+</head>
+<body>
+    <header class="header-principal">
+        <div class="contenedor header-contenido">
+            <a href="index.html" class="logo-link">
+                <!-- FALTA: logo en formato .svg en assets/images/logo.svg -->
+                <span class="logo-texto">Hermanos Jota</span>
+            </a>
+            <nav class="navegacion-principal">
+                <ul class="lista-nav">
+                    <li><a href="index.html" class="link-nav">Taller</a></li>
+                    <li><a href="productos.html" class="link-nav">Catálogo</a></li>
+                    <li><a href="#contacto" class="link-nav" id="link-nav-contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección de Catálogo: permanece visible como base sin ser reemplazada -->
+    <main class="main-catalogo">
+        <section class="hero-catalogo">
+            <div class="contenedor hero-contenido">
+                <h1 class="titulo-principal">Nuestro Catálogo</h1>
+                <p class="texto-hero">Piezas diseñadas para acompañar tu vida, elaboradas con maderas nativas y una atención artesanal al detalle.</p>
+                <button id="btn-ver-catalogo" class="btn-primario cta-hero">Explorar las piezas</button>
+            </div>
+        </section>
+
+        <section class="seccion-busqueda">
+            <div class="contenedor busqueda-contenido">
+                <label for="buscador-productos" class="label-buscador">Buscá la pieza ideal para tu hogar</label>
+                <input type="text" id="buscador-productos" class="input-buscador" placeholder="Ej. Sillón Algarrobo, Petiribí...">
+            </div>
+        </section>
+
+        <!-- Contenedor dinámico de productos del catálogo -->
+        <section id="contenedor-productos" class="seccion-productos contenedor" aria-live="polite">
+            <p class="mensaje-carga">Las piezas están saliendo del taller...</p>
+        </section>
+    </main>
+
+    <!-- Planilla Flotante / Modal Superpuesto de Contacto -->
+    <div id="modal-contacto" class="modal-contacto modal-contacto--oculto" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-contacto">
+        <div class="modal-overlay" id="modal-overlay" tabindex="-1"></div>
+        <div class="tarjeta-contacto" role="document">
+            <button type="button" id="btn-cerrar-contacto" class="btn-cerrar-contacto" aria-label="Cerrar formulario de contacto">&times;</button>
+            
+            <form id="formulario-contacto" class="formulario-contacto" novalidate>
+                <!-- Aviso accesible de estado general (éxito o error global) -->
+                <div id="aviso-contacto" class="aviso-contacto" role="alert" aria-live="polite"></div>
+
+                <div class="campo-grupo">
+                    <label for="nombre" class="label-contacto">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" class="input-contacto" autocomplete="name" required>
+                    <span class="error-mensaje" id="error-nombre" aria-live="polite"></span>
+                </div>
+
+                <div class="campo-grupo">
+                    <label for="email" class="label-contacto">Correo electrónico *</label>
+                    <input type="email" id="email" name="email" class="input-contacto" autocomplete="email" required>
+                    <span class="error-mensaje" id="error-email" aria-live="polite"></span>
+                </div>
+
+                <div class="campo-grupo">
+                    <label for="mensaje" class="label-contacto">Mensaje *</label>
+                    <textarea id="mensaje" name="mensaje" class="textarea-contacto" rows="4" required></textarea>
+                    <span class="error-mensaje" id="error-mensaje" aria-live="polite"></span>
+                </div>
+
+                <button type="submit" id="btn-enviar" class="btn-enviar-contacto">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer-principal" id="contacto-footer">
+        <div class="contenedor footer-contenido">
+            <div class="bloque-footer">
+                <h3 class="titulo-footer">Hermanos Jota</h3>
+                <p class="texto-footer">Muebles con alma y oficio desde 1960.</p>
+                <p class="texto-footer" id="anio-actual">- Más de 60 años de historia en la madera.</p>
+            </div>
+            <div class="bloque-footer">
+                <h3 class="titulo-footer">Casa Taller</h3>
+                <p class="texto-footer">Av. San Juan 2847, San Cristóbal, CABA.</p>
+                <p class="texto-footer">Lun a Vie: 10:00 - 19:00 | Sáb: 10:00 - 14:00</p>
+            </div>
+            <div class="bloque-footer">
+                <h3 class="titulo-footer">Contacto</h3>
+                <p class="texto-footer">info@hermanosjota.com.ar</p>
+                <p class="texto-footer">+54 11 4567-8900</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="texto-footer-bottom">&copy; 2026 Hermanos Jota. Todos los derechos reservados. Hecho con oficio.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/productos.js"></script>
+    <script type="module" src="js/contacto.js"></script>
+</body>
+</html>
