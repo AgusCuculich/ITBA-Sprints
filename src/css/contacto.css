@@ -1,114 +1,110 @@
 /* ==========================================================================
-   Importación de Estilos Globales y Base (Hermanos Jota)
+   Importación de Estilos de Productos y Globales (Hermanos Jota)
+   Importa styles.css y productos.css para mantener el diseño visual uniforme
    ========================================================================== */
-@import url('styles.css');
+@import url('productos.css');
 
 /* ==========================================================================
-   Planilla Flotante y Overlay Semitransparente
+   Vistas Conmutables (Catálogo vs Contacto)
    ========================================================================== */
-.modal-contacto {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10000;
-  padding: 1rem;
-  box-sizing: border-box;
+.vista-seccion {
+  display: none;
 }
 
-.modal-contacto--oculto {
-  display: none !important;
+.vista-seccion.vista-activa {
+  display: block;
+  animation: animacionAparicionVista 0.3s ease-out;
 }
 
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* Overlay semitransparente requerido */
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-  z-index: 10001;
-}
-
-/* ==========================================================================
-   Tarjeta Centrada de Contacto (.tarjeta-contacto)
-   ========================================================================== */
-.tarjeta-contacto {
-  position: relative;
-  z-index: 10002; /* Se ubica por encima del overlay semitransparente */
-  background-color: #A0522D; /* Siena Tostado */
-  border-radius: 6px;
-  padding: 2.2rem 2rem 2rem;
-  width: 100%;
-  max-width: 440px;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
-  animation: aparicionModal 0.25s ease-out forwards;
-}
-
-@keyframes aparicionModal {
+@keyframes animacionAparicionVista {
   from {
     opacity: 0;
-    transform: translateY(-16px) scale(0.98);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tarjeta-contacto {
+  .vista-seccion.vista-activa {
     animation: none;
   }
 }
 
 /* ==========================================================================
-   Botón Cerrar ("X")
+   Hero de Contacto
    ========================================================================== */
-.btn-cerrar-contacto {
-  position: absolute;
-  top: 0.6rem;
-  right: 0.9rem;
-  background: transparent;
-  border: none;
-  color: #F5E6D3; /* Alabastro Cálido */
-  font-size: 1.8rem;
-  line-height: 1;
-  cursor: pointer;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.btn-cerrar-contacto:hover {
-  color: #FFFFFF;
-  transform: scale(1.15);
-}
-
-.btn-cerrar-contacto:focus-visible {
-  outline: 2px solid #D4A437;
+.hero-contacto {
+  padding-bottom: 1.5rem;
 }
 
 /* ==========================================================================
-   Campos y Etiquetas
+   Sección del Formulario de Contacto
+   Tarjeta elegante integrada con la paleta de marca y diseño Mid-Century
    ========================================================================== */
+.seccion-formulario-contacto {
+  padding: 1rem 0 4rem;
+}
+
+.contenedor-contacto {
+  width: 90%;
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.tarjeta-contacto {
+  background-color: #FAF5ED; /* Tono cálido derivado de Alabastro Cálido */
+  border: 1px solid rgba(160, 82, 45, 0.2); /* Borde suave en Siena Tostado */
+  border-radius: 8px;
+  padding: 2.5rem 2.2rem;
+  width: 100%;
+  box-shadow: 0 10px 28px rgba(160, 82, 45, 0.08), 0 2px 6px rgba(160, 82, 45, 0.04);
+  box-sizing: border-box;
+}
+
+/* Encabezado del Formulario */
+.titulo-contacto {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--siena-tostado, #A0522D);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.bajada-contacto {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--negro-carbon, #1A1A1A);
+  margin-bottom: 1.75rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+/* ==========================================================================
+   Campos y Etiquetas del Formulario
+   ========================================================================== */
+.formulario-contacto {
+  display: flex;
+  flex-direction: column;
+}
+
 .campo-grupo {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1.15rem;
+  margin-bottom: 1.25rem;
 }
 
 .label-contacto {
   font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 500;
-  color: #F5E6D3; /* Alabastro Cálido */
+  color: var(--negro-carbon, #1A1A1A);
   margin-bottom: 0.4rem;
   display: block;
 }
@@ -116,72 +112,96 @@
 .input-contacto,
 .textarea-contacto {
   width: 100%;
-  background-color: #F5E6D3; /* Alabastro Cálido */
-  border: 1px solid rgba(135, 169, 107, 0.4); /* Verde Salvia */
+  background-color: var(--alabastro-calido, #F5E6D3);
+  border: 1px solid rgba(160, 82, 45, 0.25);
   border-radius: 4px;
-  padding: 0.65rem 0.75rem;
+  padding: 0.75rem 0.85rem;
   font-family: 'Inter', sans-serif;
   font-size: 0.95rem;
-  color: var(--negro-carbon);
+  color: var(--negro-carbon, #1A1A1A);
   box-sizing: border-box;
   outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
+.input-contacto::placeholder,
+.textarea-contacto::placeholder {
+  color: rgba(26, 26, 26, 0.45);
+  font-size: 0.9rem;
+}
+
+/* Acento en foco: Vara de Oro (#D4A437) */
 .input-contacto:focus,
 .textarea-contacto:focus {
-  border-color: #D4A437; /* Vara de Oro */
-  box-shadow: 0 0 0 2px rgba(212, 164, 55, 0.4);
+  border-color: var(--vara-de-oro, #D4A437);
+  box-shadow: 0 0 0 3px rgba(212, 164, 55, 0.35);
+  background-color: #FFFFFF;
 }
 
+/* Estados de Error en Campos: Rosa Polvoriento (#C47A6D) */
 .input-contacto.campo-error,
 .textarea-contacto.campo-error {
-  border-color: #C47A6D; /* Rosa Polvoriento */
-  box-shadow: 0 0 0 2px rgba(196, 122, 109, 0.45);
+  border-color: var(--rosa-polvoriento, #C47A6D);
+  box-shadow: 0 0 0 3px rgba(196, 122, 109, 0.35);
+  background-color: #FFFDFD;
 }
 
 .textarea-contacto {
-  min-height: 110px;
+  min-height: 120px;
   resize: vertical;
 }
 
 /* ==========================================================================
    Botón Enviar
+   Color de marca: Siena Tostado (#A0522D)
    ========================================================================== */
 .btn-enviar-contacto {
   width: 100%;
-  background-color: #D4A437; /* Vara de Oro */
-  color: #FFFFFF;
+  background-color: var(--siena-tostado, #A0522D);
+  color: var(--alabastro-calido, #F5E6D3);
   font-family: 'Inter', sans-serif;
   font-size: 1rem;
   font-weight: 600;
-  padding: 0.75rem 1.25rem;
-  border: none;
-  border-radius: 6px;
+  padding: 0.85rem 1.5rem;
+  border: 1px solid var(--siena-tostado, #A0522D);
+  border-radius: 4px;
   cursor: pointer;
   margin-top: 0.5rem;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition: all 0.3s ease;
+  text-align: center;
 }
 
 .btn-enviar-contacto:hover {
-  background-color: #8C4422; /* Siena Tostado oscuro en hover */
+  background-color: var(--alabastro-calido, #F5E6D3);
+  color: var(--siena-tostado, #A0522D);
+  border: 1px solid var(--siena-tostado, #A0522D);
+  box-shadow: 0 4px 12px rgba(212, 164, 55, 0.25);
 }
 
 .btn-enviar-contacto:active {
-  transform: scale(0.99);
+  transform: scale(0.98);
+}
+
+.btn-enviar-contacto:focus-visible {
+  outline: 2px solid var(--siena-tostado, #A0522D);
+  outline-offset: 2px;
 }
 
 /* ==========================================================================
-   Mensajes de Error y Avisos de Estado
+   Mensajes de Error y Avisos de Estado (WCAG AA)
    ========================================================================== */
 .error-mensaje {
   display: none;
   font-family: 'Inter', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 500;
-  color: #F5E6D3; /* Alabastro Cálido para alta legibilidad sobre Siena Tostado */
-  margin-top: 0.35rem;
-  line-height: 1.3;
+  color: #9C3424; /* Contraste legible sobre fondo claro */
+  background-color: rgba(196, 122, 109, 0.18);
+  border-left: 3px solid var(--rosa-polvoriento, #C47A6D);
+  padding: 0.35rem 0.6rem;
+  border-radius: 0 4px 4px 0;
+  margin-top: 0.4rem;
+  line-height: 1.35;
 }
 
 .error-mensaje.visible {
@@ -191,32 +211,49 @@
 .aviso-contacto {
   display: none;
   font-family: 'Inter', sans-serif;
-  font-size: 0.9rem;
-  padding: 0.85rem 1rem;
-  border-radius: 4px;
-  margin-bottom: 1.25rem;
-  line-height: 1.4;
+  font-size: 0.92rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  line-height: 1.45;
 }
 
+.aviso-contacto:focus {
+  outline: 2px solid var(--siena-tostado, #A0522D);
+  outline-offset: 2px;
+}
+
+/* Aviso de Error Global */
 .aviso-contacto.aviso-error {
   display: block;
-  background-color: rgba(196, 122, 109, 0.25); /* Rosa Polvoriento */
-  border: 1px solid #C47A6D;
-  color: #FFFFFF;
+  background-color: rgba(196, 122, 109, 0.18);
+  border: 1px solid var(--rosa-polvoriento, #C47A6D);
+  color: #7D281D;
 }
 
+/* Aviso de Éxito Global (Verde Salvia) */
 .aviso-contacto.aviso-exito {
   display: block;
-  background-color: rgba(135, 169, 107, 0.25); /* Verde Salvia */
-  border: 1px solid #87A96B;
-  color: #FFFFFF;
+  background-color: rgba(135, 169, 107, 0.22);
+  border: 1px solid var(--verde-salvia, #87A96B);
+  color: #2D4C1C;
 }
 
 /* ==========================================================================
-   Media Queries Responsivas
+   Adaptabilidad Responsiva Móvil
    ========================================================================== */
 @media (max-width: 480px) {
   .tarjeta-contacto {
-    padding: 1.8rem 1.2rem 1.5rem;
+    padding: 1.75rem 1.25rem;
+    border-radius: 6px;
+  }
+
+  .titulo-contacto {
+    font-size: 1.65rem;
+  }
+
+  .bajada-contacto {
+    font-size: 0.88rem;
+    margin-bottom: 1.25rem;
   }
 }

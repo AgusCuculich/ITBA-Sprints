@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo y Contacto - Hermanos Jota</title>
+    <title>Contacto - Hermanos Jota</title>
     <meta name="description" content="Descubrí nuestra colección de muebles artesanales y contactate con nuestro taller. Hermanos Jota.">
     
-    <!-- Precarga de fuentes para evitar FOIT (Manual de Marca 3.C) -->
+    <!-- Precarga de fuentes locales para evitar FOIT (Manual de Marca 3.C) -->
     <link rel="preload" as="font" href="assets/fonts/inter/inter-v-latin-400.woff2" type="font/woff2" crossorigin>
     <link rel="preload" as="font" href="assets/fonts/playfair-display/playfair-display-v-latin-700.woff2" type="font/woff2" crossorigin>
     
-    <link rel="stylesheet" href="css/productos.css">
+    <!-- Estilos de la interfaz de contacto y catálogo unificados -->
     <link rel="stylesheet" href="css/contacto.css">
 </head>
 <body>
@@ -20,71 +20,107 @@
                 <!-- FALTA: logo en formato .svg en assets/images/logo.svg -->
                 <span class="logo-texto">Hermanos Jota</span>
             </a>
-            <nav class="navegacion-principal">
+            <nav class="navegacion-principal" aria-label="Navegación principal">
                 <ul class="lista-nav">
                     <li><a href="index.html" class="link-nav">Taller</a></li>
-                    <li><a href="productos.html" class="link-nav">Catálogo</a></li>
-                    <li><a href="#contacto" class="link-nav" id="link-nav-contacto">Contacto</a></li>
+                    <li><a href="#catalogo" class="link-nav" id="link-nav-catalogo">Catálogo</a></li>
+                    <li><a href="#contacto" class="link-nav activo" id="link-nav-contacto" aria-current="page">Contacto</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Sección de Catálogo: permanece visible como base sin ser reemplazada -->
-    <main class="main-catalogo">
-        <section class="hero-catalogo">
-            <div class="contenedor hero-contenido">
-                <h1 class="titulo-principal">Nuestro Catálogo</h1>
-                <p class="texto-hero">Piezas diseñadas para acompañar tu vida, elaboradas con maderas nativas y una atención artesanal al detalle.</p>
-                <button id="btn-ver-catalogo" class="btn-primario cta-hero">Explorar las piezas</button>
-            </div>
-        </section>
-
-        <section class="seccion-busqueda">
-            <div class="contenedor busqueda-contenido">
-                <label for="buscador-productos" class="label-buscador">Buscá la pieza ideal para tu hogar</label>
-                <input type="text" id="buscador-productos" class="input-buscador" placeholder="Ej. Sillón Algarrobo, Petiribí...">
-            </div>
-        </section>
-
-        <!-- Contenedor dinámico de productos del catálogo -->
-        <section id="contenedor-productos" class="seccion-productos contenedor" aria-live="polite">
-            <p class="mensaje-carga">Las piezas están saliendo del taller...</p>
-        </section>
-    </main>
-
-    <!-- Planilla Flotante / Modal Superpuesto de Contacto -->
-    <div id="modal-contacto" class="modal-contacto modal-contacto--oculto" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-contacto">
-        <div class="modal-overlay" id="modal-overlay" tabindex="-1"></div>
-        <div class="tarjeta-contacto" role="document">
-            <button type="button" id="btn-cerrar-contacto" class="btn-cerrar-contacto" aria-label="Cerrar formulario de contacto">&times;</button>
-            
-            <form id="formulario-contacto" class="formulario-contacto" novalidate>
-                <!-- Aviso accesible de estado general (éxito o error global) -->
-                <div id="aviso-contacto" class="aviso-contacto" role="alert" aria-live="polite"></div>
-
-                <div class="campo-grupo">
-                    <label for="nombre" class="label-contacto">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" class="input-contacto" autocomplete="name" required>
-                    <span class="error-mensaje" id="error-nombre" aria-live="polite"></span>
+    <main class="main-contacto-catalogo">
+        <!-- Vista Catálogo (Diseño e Interfaz idéntica a productos.html) -->
+        <div id="vista-catalogo" class="vista-seccion" aria-labelledby="titulo-catalogo">
+            <section class="hero-catalogo">
+                <div class="contenedor hero-contenido">
+                    <h1 id="titulo-catalogo" class="titulo-principal">Nuestro Catálogo</h1>
+                    <p class="texto-hero">Piezas diseñadas para acompañar tu vida, elaboradas con maderas nativas y una atención artesanal al detalle.</p>
+                    <button id="btn-ver-catalogo" class="btn-primario cta-hero">Explorar las piezas</button>
                 </div>
+            </section>
 
-                <div class="campo-grupo">
-                    <label for="email" class="label-contacto">Correo electrónico *</label>
-                    <input type="email" id="email" name="email" class="input-contacto" autocomplete="email" required>
-                    <span class="error-mensaje" id="error-email" aria-live="polite"></span>
+            <section class="seccion-busqueda">
+                <div class="contenedor busqueda-contenido">
+                    <label for="buscador-productos" class="label-buscador">Buscá la pieza ideal para tu hogar</label>
+                    <input type="text" id="buscador-productos" class="input-buscador" placeholder="Ej. Sillón Algarrobo, Petiribí...">
                 </div>
+            </section>
 
-                <div class="campo-grupo">
-                    <label for="mensaje" class="label-contacto">Mensaje *</label>
-                    <textarea id="mensaje" name="mensaje" class="textarea-contacto" rows="4" required></textarea>
-                    <span class="error-mensaje" id="error-mensaje" aria-live="polite"></span>
-                </div>
-
-                <button type="submit" id="btn-enviar" class="btn-enviar-contacto">Enviar</button>
-            </form>
+            <!-- aria-live polite para anunciar cambios cuando el usuario busca -->
+            <section id="contenedor-productos" class="seccion-productos contenedor" aria-live="polite">
+                <p class="mensaje-carga">Las piezas están saliendo del taller...</p>
+            </section>
         </div>
-    </div>
+
+        <!-- Vista Contacto (Formulario de Contacto Respetado con Diseño Mid-Century) -->
+        <div id="vista-contacto" class="vista-seccion vista-activa" aria-labelledby="titulo-contacto-hero">
+            <section class="hero-catalogo hero-contacto">
+                <div class="contenedor hero-contenido">
+                    <h1 id="titulo-contacto-hero" class="titulo-principal">Contacto con el Taller</h1>
+                    <p class="texto-hero">Envianos tus comentarios o preguntas y nos pondremos en contacto contigo.</p>
+                </div>
+            </section>
+
+            <section class="seccion-formulario-contacto">
+                <div class="contenedor contenedor-contacto">
+                    <div class="tarjeta-contacto" aria-labelledby="titulo-contacto">
+                        <h2 id="titulo-contacto" class="titulo-contacto">Contáctanos</h2>
+                        <p class="bajada-contacto">Escribinos y coordinemos una visita a la Casa Taller o consultanos por piezas a medida.</p>
+                        
+                        <!-- Aviso accesible de estado general (éxito o error global) -->
+                        <div id="aviso-contacto" class="aviso-contacto" role="alert" aria-live="polite" tabindex="-1"></div>
+
+                        <form id="formulario-contacto" class="formulario-contacto" novalidate>
+                            <div class="campo-grupo">
+                                <label for="nombre" class="label-contacto">Nombre</label>
+                                <input 
+                                    type="text" 
+                                    id="nombre" 
+                                    name="nombre" 
+                                    class="input-contacto" 
+                                    autocomplete="name" 
+                                    placeholder="Tu nombre" 
+                                    required
+                                >
+                                <span class="error-mensaje" id="error-nombre" aria-live="polite"></span>
+                            </div>
+
+                            <div class="campo-grupo">
+                                <label for="email" class="label-contacto">Correo electrónico</label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    class="input-contacto" 
+                                    autocomplete="email" 
+                                    placeholder="tu@correo.com" 
+                                    required
+                                >
+                                <span class="error-mensaje" id="error-email" aria-live="polite"></span>
+                            </div>
+
+                            <div class="campo-grupo">
+                                <label for="mensaje" class="label-contacto">Mensaje *</label>
+                                <textarea 
+                                    id="mensaje" 
+                                    name="mensaje" 
+                                    class="textarea-contacto" 
+                                    rows="4" 
+                                    placeholder="Escribí aquí tu consulta o comentario..." 
+                                    required
+                                ></textarea>
+                                <span class="error-mensaje" id="error-mensaje" aria-live="polite"></span>
+                            </div>
+
+                            <button type="submit" id="btn-enviar" class="btn-enviar-contacto">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
 
     <footer class="footer-principal" id="contacto-footer">
         <div class="contenedor footer-contenido">
@@ -109,7 +145,6 @@
         </div>
     </footer>
 
-    <script type="module" src="js/productos.js"></script>
     <script type="module" src="js/contacto.js"></script>
 </body>
 </html>
