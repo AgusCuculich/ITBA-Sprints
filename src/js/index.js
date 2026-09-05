@@ -1,26 +1,20 @@
 import { productos } from './datos-productos.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const contenedor = document.getElementById('contenedor-destacados');
+  const contenedor = document.getElementById('contenedor-productos');
   if (!contenedor) return;
 
   // Tomamos los primeros 3 productos
   const destacados = productos ? productos.slice(0, 3) : [];
 
-  contenedor.innerHTML = destacados.map(prod => {
-    // 1. Obtener la ruta base del objeto (soporta la propiedad 'imagen' o 'imagenUrl')
-    let rutaImagen = prod.imagen || prod.imagenUrl || '';
-
-    // 2. Normalizar la ruta eliminando '../' o './' al inicio para que apunte bien desde la raíz de index.html
-    if (rutaImagen) {
-      rutaImagen = rutaImagen.replace(/^(\.\.\/|\.\/)+/, '');
-      // Si no empieza con 'assets/', se lo agregamos por seguridad
-      if (!rutaImagen.startsWith('assets/')) {
-        rutaImagen = `assets/images/${rutaImagen}`;
-      }
-    } else {
-      rutaImagen = 'assets/images/placeholder.jpg';
-    }
+  contenedor.innerHTML = destacados.map(producto => {
+    const urlImagen = `assets/images/${producto.imagen}`;
+    // Requisito: dejar comentario si la imagen no existe
+    const comentarioFaltaFoto = `<!-- FALTA: foto de ${producto.nombre}, plano general con luz cálida de tarde (${urlImagen}) -->`;
+    
+    const etiquetaSustentable = producto.sustentable 
+        ? `<span class="etiqueta-sustentable" aria-label="Producto sustentable certificado FSC">Eco-friendly</span>` 
+        : '';
 
     return `
         <article class="tarjeta-producto">
@@ -31,11 +25,25 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div class="info-producto">
                 <h2 class="nombre-producto">${producto.nombre}</h2>
-                <div class="contenedor-cta">
-                    <button type="button" class="btn-primario btn-sumar-hogar" data-id="${producto.id}">Sumalo a tu hogar</button>
-                </div>
+                <button type="button" class="btn-primario btn-sumar-hogar" data-id="${producto.id}">Sumalo a tu hogar</button>
             </div>
         </article>
     `;
   }).join('');
+
+  // 10. Interacción: Guardar producto seleccionado en LocalStorage y navegar
+  if (contenedor) {
+      contenedor.addEventListener('click', (evento) => {
+          const botonSumar = evento.target.closest('.btn-sumar-hogar');
+          if (!botonSumar) return;
+  
+          const idProducto = botonSumar.dataset.id;
+          const productoSeleccionado = productos.find((prod) => prod.id === idProducto);
+  
+          if (productoSeleccionado) {
+              localStorage.setItem('productoSeleccionado', JSON.stringify(productoSeleccionado));
+              window.location.href = 'producto.html';
+          }
+      });
+  }
 });

@@ -6,22 +6,12 @@
 // 1. Importamos los productos
 import { productos } from './datos-productos.js';
 
-
 // 2. Elementos del DOM
 const contenedorProductos = document.getElementById('contenedor-productos');
 const buscadorInput = document.getElementById('buscador-productos');
-const spanAnio = document.getElementById('anio-actual');
 const btnVerCatalogo = document.getElementById('btn-ver-catalogo');
 
-// 3. Inicialización del año de historia (según Manual)
-const calcularAnioHistoria = () => {
-    if (spanAnio) {
-        const anosHistoria = new Date().getFullYear() - 1960;
-        spanAnio.textContent = `- ${anosHistoria} años de historia en la madera.`;
-    }
-};
-
-// 4. Construcción HTML de las tarjetas
+// 3. Construcción HTML de las tarjetas
 const crearTarjetaProducto = (producto) => {
     const urlImagen = `assets/images/${producto.imagen}`;
     // Requisito: dejar comentario si la imagen no existe
@@ -40,15 +30,14 @@ const crearTarjetaProducto = (producto) => {
             </div>
             <div class="info-producto">
                 <h2 class="nombre-producto">${producto.nombre}</h2>
-                <div class="contenedor-cta">
-                    <button type="button" class="btn-primario btn-sumar-hogar" data-id="${producto.id}">Sumalo a tu hogar</button>
-                </div>
+                <button type="button" class="btn-primario btn-sumar-hogar" data-id="${producto.id}">Sumalo a tu hogar</button>
+            </div>
             </div>
         </article>
     `;
 };
 
-// 5. Renderizado del listado de productos
+// 4. Renderizado del listado de productos
 const renderizarCatalogo = (listaProductos) => {
     if (!contenedorProductos) return;
 
@@ -62,7 +51,7 @@ const renderizarCatalogo = (listaProductos) => {
     contenedorProductos.innerHTML = htmlProductos;
 };
 
-// 6. Carga asíncrona simulada de la API
+// 5. Carga asíncrona simulada de la API
 const cargarDatosAsync = async () => {
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -71,13 +60,10 @@ const cargarDatosAsync = async () => {
     });
 };
 
-// 7. Lógica principal de inicialización
+// 6. Lógica principal de inicialización
 const inicializarCatalogo = async () => {
-    calcularAnioHistoria();
-    
     try {
         const datosCargados = await cargarDatosAsync();
-        console.log(datosCargados);
         renderizarCatalogo(datosCargados);
     } catch (error) {
         if (contenedorProductos) {
@@ -86,7 +72,7 @@ const inicializarCatalogo = async () => {
     }
 };
 
-// 8. Interacción: Búsqueda dinámica
+// 7. Interacción: Búsqueda dinámica
 if (buscadorInput) {
     buscadorInput.addEventListener('input', (evento) => {
         const terminoBusqueda = evento.target.value.toLowerCase().trim();
@@ -101,7 +87,7 @@ if (buscadorInput) {
     });
 }
 
-// 9. Interacción: Scroll Suave Accesible
+// 8. Interacción: Scroll Suave Accesible
 const realizarScrollSuave = (elementoDestino) => {
     if (!elementoDestino) return;
     
@@ -121,7 +107,7 @@ if (btnVerCatalogo && contenedorProductos) {
     });
 }
 
-// 10. Interacción: Guardar producto seleccionado en LocalStorage y navegar
+// 9. Interacción: Guardar producto seleccionado en LocalStorage y navegar
 if (contenedorProductos) {
     contenedorProductos.addEventListener('click', (evento) => {
         const botonSumar = evento.target.closest('.btn-sumar-hogar');

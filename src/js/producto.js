@@ -60,7 +60,28 @@ const renderizarDetalleProducto = (producto) => {
 
     // Actualización de accesibilidad y navegación
     document.title = `${producto.nombre} - Hermanos Jota`;
-    if (breadcrumbActual) {
+    
+    // Actualización dinámica de migas de pan según la página previa del usuario
+    const listaMigas = document.querySelector('.lista-migas');
+    if (listaMigas) {
+        const vinoDeInicio = document.referrer.includes('index.html') || (document.referrer !== '' && new URL(document.referrer, window.location.href).pathname.endsWith('/'));
+
+        if (vinoDeInicio) {
+            listaMigas.innerHTML = `
+                <li><a href="index.html" class="miga-link">Inicio</a></li>
+                <li class="miga-separador">/</li>
+                <li class="miga-actual" id="breadcrumb-producto-actual" aria-current="page">${producto.nombre}</li>
+            `;
+        } else {
+            listaMigas.innerHTML = `
+                <li><a href="index.html" class="miga-link">Inicio</a></li>
+                <li class="miga-separador">/</li>
+                <li><a href="productos.html" class="miga-link">Catálogo</a></li>
+                <li class="miga-separador">/</li>
+                <li class="miga-actual" id="breadcrumb-producto-actual" aria-current="page">${producto.nombre}</li>
+            `;
+        }
+    } else if (breadcrumbActual) {
         breadcrumbActual.textContent = producto.nombre;
     }
 

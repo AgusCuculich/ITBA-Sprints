@@ -101,6 +101,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', Georgia, serif;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    color: var(--siena-tostado);
 }
 
 h1 {
@@ -206,6 +207,8 @@ main{
     display: inline-block;
     border: 1px solid var(--siena-tostado);
     cursor: pointer;
+    width: fit-content;
+    margin: 0 auto;
 }
 
 .btn-primario:hover {
@@ -233,6 +236,75 @@ main{
 }
 
 /* ==========================================================================
+   Grilla de Productos
+   ========================================================================== */
+.seccion-productos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  min-height: 400px;
+}
+
+/* ==========================================================================
+   Tarjeta de Producto
+   ========================================================================== */
+.tarjeta-producto {
+  background-color: var(--alabastro-calido);
+  border: 1px solid rgba(160, 82, 45, 0.15); /* Borde sutil siena tostado */
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.tarjeta-producto:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.contenedor-imagen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: rgba(196, 122, 109, 0.05);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagen-producto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.tarjeta-producto:hover .imagen-producto {
+  transform: scale(1.03);
+}
+
+/* ==========================================================================
+   Información del Producto
+   ========================================================================== */
+.info-producto {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 0.75rem;
+}
+
+.nombre-producto {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--siena-tostado);
+}
+
+/* ==========================================================================
    Mensajes de Estado (Carga y Vacío)
    ========================================================================== */
 .mensaje-carga,
@@ -250,54 +322,10 @@ main{
 /* ==========================================================================
    Footer Común
    ========================================================================== */
-.footer-principal {
-    background-color: var(--siena-tostado);
-    color: var(--alabastro-calido);
-    padding: 3rem 0 1rem;
-    margin-top: 4rem;
-}
-
-.footer-contenido {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-bottom: 2rem;
-    text-align: center;
-}
-
-.titulo-footer {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: var(--alabastro-calido);
-}
-
-.texto-footer {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.875rem;
-    font-weight: 300;
-    margin-bottom: 0.5rem;
-    color: var(--alabastro-calido);
-}
-
-.footer-bottom {
-    text-align: center;
-    border-top: 1px solid rgba(245, 230, 211, 0.2);
-    padding-top: 1.5rem;
-}
-
-.texto-footer-bottom {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 300;
-    color: var(--alabastro-calido);
-}
 
 /* ==========================================================================
    Estilo texto seleccionado
    ========================================================================== */
-
 ::selection {
     background-color: rgb(160, 82, 45, 0.6); /* Color de fondo del texto seleccionado */
     color: var(--alabastro-calido); /* Color de la letra */
@@ -317,4 +345,18 @@ main{
         justify-content: space-between;
         text-align: left;
     }
+
+  .seccion-productos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64em) { /* 1024px - Desktop */
+  .seccion-productos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .titulo-principal {
+    font-size: 3rem;
+  }
 }
