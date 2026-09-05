@@ -12,6 +12,7 @@
     /* Variables de espaciados */
     --espaciado-interno: 1rem;
     --espaciado-secciones: 2rem;
+    --espaciado-chico: .5rem;
 
     /*  Variables radius btn  */
     --btn-radius: 0.25rem;
@@ -21,6 +22,7 @@
     --h2: 2.25rem;
     --h3: 1.75rem;
     --h4: 1.25rem;
+    --h5: 1.125rem;
     --text: 1rem;
     --small-text: 14px;
 }
@@ -120,6 +122,10 @@ h4 {
     font-size: var(--h4);
 }
 
+h5 {
+    font-size: var(--h5);
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -142,6 +148,10 @@ main{
     display: flex;
     flex-direction: column;
     gap: var(--espaciado-secciones);
+}
+
+button {
+    font-weight: 500;
 }
 
 /* ==========================================================================
@@ -196,15 +206,12 @@ main{
    Botones y CTAs Comunes
    ========================================================================== */
 .btn-primario {
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    font-size: var(--h5);
     color: var(--alabastro-calido);
     background-color: var(--siena-tostado);
     padding: 1rem 1.5rem;
     border-radius: var(--btn-radius);
     transition: background-color 0.3s ease;
-    display: inline-block;
     border: 1px solid var(--siena-tostado);
     cursor: pointer;
     width: fit-content;
@@ -304,6 +311,11 @@ main{
   color: var(--siena-tostado);
 }
 
+/* Usamos margin-top: auto para empujarlo al fondo */
+.info-producto > :last-child {
+  margin-top: auto;
+}
+
 /* ==========================================================================
    Mensajes de Estado (Carga y Vacío)
    ========================================================================== */
@@ -320,8 +332,153 @@ main{
 }
 
 /* ==========================================================================
-   Footer Común
+   Footer Común (hj-footer)
    ========================================================================== */
+
+.footer-principal {
+    background-color: rgb(160, 82, 45, 0.8);
+    color: var(--negro-carbon);
+    padding: var(--espaciado-interno);
+    padding-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaciado-interno);
+}
+
+.footer-contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.footer-bloque {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaciado-chico);
+}
+
+.footer-taller {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaciado-interno);
+}
+
+.footer-titulo {
+    font-weight: 700;
+    color: rgb(245, 230, 211, 0.8);
+    position: relative;
+}
+
+.footer-texto {
+    font-size: var(--small-text);
+}
+
+.footer-titulo::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 32px;
+    height: 2px;
+    background-color: var(--vara-de-oro);
+}
+
+.footer-subtitulo {
+    font-weight: 700;
+    color: rgb(245, 230, 211, 0.8);
+}
+
+footer address {
+    font-style: normal;
+}
+
+/* Formulario inline para newsletter */
+.formulario-newsletter {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.newsletter-inline {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+    max-width: 440px;
+    gap: 0;
+}
+
+.newsletter-input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.75rem 1rem;
+    background-color: var(--alabastro-calido);
+    color: var(--negro-carbon);
+    border: 1px solid var(--alabastro-calido);
+    border-radius: var(--btn-radius) 0 0 var(--btn-radius);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    transition: outline 0.2s ease, border-color 0.2s ease;
+}
+
+.newsletter-input:focus {
+    outline: 1px solid var(--negro-carbon);
+    outline-offset: -1px;
+}
+
+.newsletter-boton {
+    background-color: var(--verde-salvia);
+    font-size: 1rem;
+    color: var(--negro-carbon);
+    padding: 0.75rem 1.25rem;
+    border-radius: 0 var(--btn-radius) var(--btn-radius) 0;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.newsletter-boton:hover {
+    background-color: #4F673C;
+    color: var(--alabastro-calido);
+}
+
+/* Canales Digitales */
+.lista-canales {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaciado-chico);
+}
+
+.item-canal {
+    display: flex;
+    align-items: center;
+    gap: var(--espaciado-chico);
+    font-size: var(--small-text);
+}
+
+.canal-icono {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    color: rgb(245, 230, 211, 0.8);
+    flex-shrink: 0;
+    transition: color 0.25s ease;
+}
+
+/* Barra de créditos inferior */
+.footer-creditos {
+    padding-top: var(--espaciado-interno);
+    border-top: 1px solid rgba(245, 230, 211, 0.18);
+    text-align: center;
+}
+
+.footer-creditos-texto {
+    font-size: var(--small-text);
+}
 
 /* ==========================================================================
    Estilo texto seleccionado
@@ -340,18 +497,46 @@ main{
         justify-content: space-between;
     }
 
+    /*Footer*/
+
     .footer-contenido {
-        flex-direction: row;
-        justify-content: space-between;
-        text-align: left;
+        display: grid;
+        grid-template-areas:
+            "taller canales"
+            "newsletter newsletter";
+        gap: 2.5rem;
     }
 
-  .seccion-productos {
-    grid-template-columns: repeat(2, 1fr);
-  }
+    .footer-taller {
+        grid-area: taller;
+    }
+
+    .footer-canales {
+        grid-area: canales;
+    }
+
+    .footer-newsletter {
+        grid-area: newsletter;
+    }
+
+    .seccion-productos {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (min-width: 64em) { /* 1024px - Desktop */
+  .footer-contenido {
+    grid-template-columns: 1fr 1.3fr 1fr;
+    grid-template-areas: none;
+    gap: var(--espaciado-secciones);
+  }
+
+  .footer-taller,
+  .footer-newsletter,
+  .footer-canales {
+    grid-area: auto;
+  }
+
   .seccion-productos {
     grid-template-columns: repeat(3, 1fr);
   }

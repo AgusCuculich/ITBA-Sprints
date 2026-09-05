@@ -3,39 +3,14 @@
  * Lógica de renderizado dinámico, búsqueda interactiva y animaciones nativas.
  */
 
-// 1. Importamos los productos
+// 1. Importamos los productos y el componente de tarjeta
 import { productos } from './datos-productos.js';
+import { crearTarjetaProducto, configurarSeleccionProducto } from './tarjeta-producto.js';
 
 // 2. Elementos del DOM
 const contenedorProductos = document.getElementById('contenedor-productos');
 const buscadorInput = document.getElementById('buscador-productos');
 const btnVerCatalogo = document.getElementById('btn-ver-catalogo');
-
-// 3. Construcción HTML de las tarjetas
-const crearTarjetaProducto = (producto) => {
-    const urlImagen = `assets/images/${producto.imagen}`;
-    // Requisito: dejar comentario si la imagen no existe
-    const comentarioFaltaFoto = `<!-- FALTA: foto de ${producto.nombre}, plano general con luz cálida de tarde (${urlImagen}) -->`;
-    
-    const etiquetaSustentable = producto.sustentable 
-        ? `<span class="etiqueta-sustentable" aria-label="Producto sustentable certificado FSC">Eco-friendly</span>` 
-        : '';
-
-    return `
-        <article class="tarjeta-producto">
-            <div class="contenedor-imagen">
-                ${comentarioFaltaFoto}
-                <img src="${urlImagen}" alt="${producto.nombre}" class="imagen-producto" loading="lazy">
-                ${etiquetaSustentable}
-            </div>
-            <div class="info-producto">
-                <h2 class="nombre-producto">${producto.nombre}</h2>
-                <button type="button" class="btn-primario btn-sumar-hogar" data-id="${producto.id}">Sumalo a tu hogar</button>
-            </div>
-            </div>
-        </article>
-    `;
-};
 
 // 4. Renderizado del listado de productos
 const renderizarCatalogo = (listaProductos) => {
@@ -108,20 +83,7 @@ if (btnVerCatalogo && contenedorProductos) {
 }
 
 // 9. Interacción: Guardar producto seleccionado en LocalStorage y navegar
-if (contenedorProductos) {
-    contenedorProductos.addEventListener('click', (evento) => {
-        const botonSumar = evento.target.closest('.btn-sumar-hogar');
-        if (!botonSumar) return;
-
-        const idProducto = botonSumar.dataset.id;
-        const productoSeleccionado = productos.find((prod) => prod.id === idProducto);
-
-        if (productoSeleccionado) {
-            localStorage.setItem('productoSeleccionado', JSON.stringify(productoSeleccionado));
-            window.location.href = 'producto.html';
-        }
-    });
-}
+configurarSeleccionProducto(contenedorProductos, productos);
 
 // Disparador cuando el DOM está listo
 document.addEventListener('DOMContentLoaded', inicializarCatalogo);
