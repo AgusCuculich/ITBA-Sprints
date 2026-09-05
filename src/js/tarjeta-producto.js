@@ -32,7 +32,7 @@ export const crearTarjetaProducto = (producto) => {
             </div>
             <div class="info-producto">
                 <h2 class="nombre-producto">${producto.nombre}</h2>
-                <button type="button" class="btn-primario btn-sumar-hogar" data-id="${producto.id}">Sumalo a tu hogar</button>
+                <button type="button" class="btn-primario btn-sumar-hogar" data-id="${producto.id}">Conocer más detalles</button>
             </div>
         </article>
     `;

@@ -18,11 +18,11 @@
     --btn-radius: 0.25rem;
 
     /*  Variables de texto   */
-    --h1: 3rem;
-    --h2: 2.25rem;
-    --h3: 1.75rem;
-    --h4: 1.25rem;
-    --h5: 1.125rem;
+    --h1: clamp(2rem, 5vw + 1rem, 3rem);      /* Rango: 32px a 48px */
+    --h2: clamp(1.6rem, 3.5vw + 1rem, 2.25rem); /* Rango: 25.6px a 36px */
+    --h3: clamp(1.35rem, 2.5vw + 0.8rem, 1.75rem); /* Rango: 21.6px a 28px */
+    --h4: clamp(1.1rem, 1.5vw + 0.8rem, 1.25rem);  /* Rango: 17.6px a 20px */
+    --h5: clamp(1rem, 1vw + 0.8rem, 1.125rem);    /* Rango: 16px a 18px */
     --text: 1rem;
     --small-text: 14px;
 }
@@ -200,6 +200,33 @@ button {
 
 .link-nav.activo {
     color: var(--siena-tostado);
+}
+
+.contenedor-carrito {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.badge-carrito {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    background-color: var(--verde-salvia);
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    line-height: 1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 /* ==========================================================================
@@ -429,14 +456,16 @@ footer address {
 
 .newsletter-boton {
     background-color: var(--verde-salvia);
-    font-size: 1rem;
+    font-size: var(--h5);
     color: var(--negro-carbon);
-    padding: 0.75rem 1.25rem;
-    border-radius: 0 var(--btn-radius) var(--btn-radius) 0;
+    padding: 1rem 1.5rem;
+    border-radius: var(--btn-radius);
     border: none;
     cursor: pointer;
     white-space: nowrap;
     transition: background-color 0.3s ease, color 0.3s ease;
+    width: fit-content;
+    margin: 0 auto;
 }
 
 .newsletter-boton:hover {
