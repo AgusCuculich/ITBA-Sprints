@@ -3,52 +3,16 @@
  * Lógica de renderizado dinámico, búsqueda interactiva y animaciones nativas.
  */
 
-// 1. Importamos los productos
+// 1. Importamos los productos y el componente de tarjeta
 import { productos } from './datos-productos.js';
-
+import { crearTarjetaProducto, configurarSeleccionProducto } from './tarjeta-producto.js';
 
 // 2. Elementos del DOM
 const contenedorProductos = document.getElementById('contenedor-productos');
 const buscadorInput = document.getElementById('buscador-productos');
-const spanAnio = document.getElementById('anio-actual');
 const btnVerCatalogo = document.getElementById('btn-ver-catalogo');
 
-// 3. Inicialización del año de historia (según Manual)
-const calcularAnioHistoria = () => {
-    if (spanAnio) {
-        const anosHistoria = new Date().getFullYear() - 1960;
-        spanAnio.textContent = `- ${anosHistoria} años de historia en la madera.`;
-    }
-};
-
-// 4. Construcción HTML de las tarjetas
-const crearTarjetaProducto = (producto) => {
-    const urlImagen = `assets/images/${producto.imagen}`;
-    // Requisito: dejar comentario si la imagen no existe
-    const comentarioFaltaFoto = `<!-- FALTA: foto de ${producto.nombre}, plano general con luz cálida de tarde (${urlImagen}) -->`;
-    
-    const etiquetaSustentable = producto.sustentable 
-        ? `<span class="etiqueta-sustentable" aria-label="Producto sustentable certificado FSC">Eco-friendly</span>` 
-        : '';
-
-    return `
-        <article class="tarjeta-producto">
-            <div class="contenedor-imagen">
-                ${comentarioFaltaFoto}
-                <img src="${urlImagen}" alt="${producto.nombre}" class="imagen-producto" loading="lazy">
-                ${etiquetaSustentable}
-            </div>
-            <div class="info-producto">
-                <h2 class="nombre-producto">${producto.nombre}</h2>
-                <div class="contenedor-cta">
-                    <button type="button" class="btn-primario btn-sumar-hogar" data-id="${producto.id}">Sumalo a tu hogar</button>
-                </div>
-            </div>
-        </article>
-    `;
-};
-
-// 5. Renderizado del listado de productos
+// 4. Renderizado del listado de productos
 const renderizarCatalogo = (listaProductos) => {
     if (!contenedorProductos) return;
 
@@ -62,7 +26,7 @@ const renderizarCatalogo = (listaProductos) => {
     contenedorProductos.innerHTML = htmlProductos;
 };
 
-// 6. Carga asíncrona simulada de la API
+// 5. Carga asíncrona simulada de la API
 const cargarDatosAsync = async () => {
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -71,13 +35,10 @@ const cargarDatosAsync = async () => {
     });
 };
 
-// 7. Lógica principal de inicialización
+// 6. Lógica principal de inicialización
 const inicializarCatalogo = async () => {
-    calcularAnioHistoria();
-    
     try {
         const datosCargados = await cargarDatosAsync();
-        console.log(datosCargados);
         renderizarCatalogo(datosCargados);
     } catch (error) {
         if (contenedorProductos) {
@@ -86,7 +47,7 @@ const inicializarCatalogo = async () => {
     }
 };
 
-// 8. Interacción: Búsqueda dinámica
+// 7. Interacción: Búsqueda dinámica
 if (buscadorInput) {
     buscadorInput.addEventListener('input', (evento) => {
         const terminoBusqueda = evento.target.value.toLowerCase().trim();
@@ -101,7 +62,7 @@ if (buscadorInput) {
     });
 }
 
-// 9. Interacción: Scroll Suave Accesible
+// 8. Interacción: Scroll Suave Accesible
 const realizarScrollSuave = (elementoDestino) => {
     if (!elementoDestino) return;
     
@@ -121,21 +82,8 @@ if (btnVerCatalogo && contenedorProductos) {
     });
 }
 
-// 10. Interacción: Guardar producto seleccionado en LocalStorage y navegar
-if (contenedorProductos) {
-    contenedorProductos.addEventListener('click', (evento) => {
-        const botonSumar = evento.target.closest('.btn-sumar-hogar');
-        if (!botonSumar) return;
-
-        const idProducto = botonSumar.dataset.id;
-        const productoSeleccionado = productos.find((prod) => prod.id === idProducto);
-
-        if (productoSeleccionado) {
-            localStorage.setItem('productoSeleccionado', JSON.stringify(productoSeleccionado));
-            window.location.href = 'producto.html';
-        }
-    });
-}
+// 9. Interacción: Guardar producto seleccionado en LocalStorage y navegar
+configurarSeleccionProducto(contenedorProductos, productos);
 
 // Disparador cuando el DOM está listo
 document.addEventListener('DOMContentLoaded', inicializarCatalogo);

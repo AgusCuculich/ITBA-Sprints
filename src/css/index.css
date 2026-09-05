@@ -1,0 +1,264 @@
+/* ==========================================================================
+   Importación de Estilos Globales y Base
+   ========================================================================== */
+@import url('styles.css');
+
+/* ==========================================================================
+   HERO SECTION - Estilo Contemporáneo & Mosaico de Muebles
+   ========================================================================== */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    align-items: center;
+}
+
+@media (min-width: 992px) {
+    .hero {
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 4rem;
+    }
+}
+
+/* Columna Izquierda: Textos y Acciones */
+.hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    max-width: 620px;
+    gap: var(--espaciado-interno);
+}
+
+.hero__tagline {
+    font-size: var(--small-text);
+    text-transform: uppercase;
+    color: var(--siena-tostado);
+    background-color: rgba(160, 82, 45, 0.1);
+    padding: 0.4rem 0.9rem;
+    border-radius: 1rem;
+}
+
+.hero__title {
+    font-weight: 700;
+    color: var(--negro-carbon);
+    text-transform: none;
+}
+
+.hero__subtitle {
+    font-size: var(--small-text);
+}
+
+/* Botones de Acción */
+.hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Métricas / Stats */
+.hero__stats {
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+    padding-top: 1.8rem;
+    border-top: 1px solid rgba(160, 82, 45, 0.2);
+    width: 100%;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.stat-number {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--negro-carbon);
+    line-height: 1.1;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: rgba(26, 26, 26, 0.65);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 38px;
+    background-color: rgba(26, 26, 26, 0.15);
+}
+
+/* ==========================================================================
+   Columna Derecha: Collage de Muebles y Elementos Flotantes
+   ========================================================================== */
+.hero__visual {
+    position: relative;
+    width: 100%;
+    max-width: 540px;
+    height: 520px;
+    margin: 0 auto;
+}
+
+@media (max-width: 576px) {
+    .hero__visual {
+        height: 440px;
+    }
+}
+
+/* Tarjetas Base del Collage */
+.hero-card {
+    position: absolute;
+    border-radius: 2.2rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.07);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+    border: 5px solid var(--alabastro-calido);
+}
+
+.hero-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 22px 42px rgba(0, 0, 0, 0.12);
+}
+
+.hero-card__img {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.hero-card:hover .hero-card__img {
+    transform: scale(1.05);
+}
+
+/* 1. Tarjeta Superior Izquierda (Tono Verde Salvia) */
+.hero-card--top {
+    top: 0;
+    left: 2%;
+    width: 52%;
+    height: 60%;
+    background-color: var(--verde-salvia);
+    z-index: 2;
+}
+
+.hero-card--top .hero-card__img {
+    object-fit: cover;
+    padding: 0.5rem;
+}
+
+/* 2. Tarjeta Derecha (Tono Rosa Polvoriento / Terracota Suave) */
+.hero-card--right {
+    top: 14%;
+    right: 2%;
+    width: 48%;
+    height: 62%;
+    background-color: var(--rosa-polvoriento);
+    z-index: 1;
+}
+
+.hero-card--right .hero-card__img {
+    object-fit: cover;
+    padding: 0.5rem;
+}
+
+/* 3. Tarjeta Inferior Izquierda (Tono Cálido Madera / Vara de Oro suave) */
+.hero-card--bottom {
+    bottom: 0;
+    left: 10%;
+    width: 58%;
+    height: 42%;
+    background-color: var(--vara-de-oro);
+    z-index: 3;
+}
+
+.hero-card--bottom .hero-card__img {
+    object-fit: cover;
+}
+
+/* Elementos Flotantes Decorativos */
+.floating-badge {
+    position: absolute;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+/* Destellos / Estrellas */
+.floating-sparkle {
+    position: absolute;
+    font-size: 1.8rem;
+    color: var(--siena-tostado);
+    z-index: 4;
+    user-select: none;
+    animation: gentle-float 4s ease-in-out infinite alternate;
+}
+
+.floating-sparkle--1 {
+    top: 44%;
+    left: -3%;
+    color: var(--verde-salvia);
+}
+
+.floating-sparkle--2 {
+    bottom: 12%;
+    right: 22%;
+    font-size: 1.5rem;
+    color: var(--rosa-polvoriento);
+    animation-delay: -2s;
+}
+
+.floating-sparkle--3 {
+    top: 6%;
+    right: 8%;
+    font-size: 1.3rem;
+    color: var(--siena-tostado);
+    animation-delay: -1s;
+}
+
+.floating-sparkle--4 {
+    bottom: 8%;
+    right: 8%;
+    font-size: 1.6rem;
+    color: var(--vara-de-oro);
+    animation-delay: -3s;
+}
+
+@keyframes gentle-float {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-8px) rotate(12deg);
+    }
+}
+
+/* DESTACADOS*/
+.featured {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espaciado-interno);
+}
+
+.featured__header {
+    text-align: center;
+    width: fit-content;
+}
+
+.featured__subtitle {
+    font-size: var(--small-text);
+}

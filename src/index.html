@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hermanos Jota - Muebles de Autor</title>
+
+    <!-- Precarga de fuentes para evitar FOIT (Manual de Marca 3.C) -->
+    <link rel="preload" as="font" href="assets/fonts/inter/inter-v-latin-400.woff2" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="assets/fonts/playfair-display/playfair-display-v-latin-700.woff2" type="font/woff2" crossorigin>
+
+    <!-- css -->
+    <link rel="stylesheet" href="css/index.css">
+
+    <!-- js -->
+    <script type="module" src="js/index.js" defer></script>
+    <script src="./js/hj-header.js" defer></script>
+    <script type="module" src="./js/hj-footer.js" defer></script>
+</head>
+<body>
+
+    <hj-header></hj-header>
+
+    <main>
+        <section class="hero contenedor">
+            <div class="hero__content">
+                <span class="hero__tagline">Mobiliario de Autor & Diseño Contemporáneo</span>
+                <h1 class="hero__title">Diseño con alma,<br>maderas con historia</h1>
+                <p class="hero__subtitle">
+                    Creamos piezas exclusivas fabricadas artesanalmente con maderas macizas recuperadas y acabados nobles. Dale vida y personalidad única a cada rincón de tu hogar.
+                </p>
+
+                <div class="hero__actions">
+                    <a href="productos.html" class="btn-primario">Explorar Catálogo</a>
+                    <a href="contacto.html" class="newsletter-boton">Conocer el Taller</a>
+                </div>
+
+                <div class="hero__stats">
+                    <div class="stat-item">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Años de Oficio</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Madera Maciza</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Piezas Creadas</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero__visual">
+                <!-- Tarjeta Superior (Verde Salvia) -->
+                <div class="hero-card hero-card--top">
+                    <img src="assets/images/Sillón Copacabana.png" alt="Sillón Copacabana en madera natural" class="hero-card__img">
+                </div>
+
+                <!-- Tarjeta Derecha (Rosa Polvoriento) -->
+                <div class="hero-card hero-card--right">
+                    <img src="assets/images/Butaca Mendoza.png" alt="Butaca Mendoza de diseño contemporáneo" class="hero-card__img">
+                </div>
+
+                <!-- Tarjeta Inferior (Vara de Oro) -->
+                <div class="hero-card hero-card--bottom">
+                    <img src="assets/images/Mesa de Centro Araucaria.png" alt="Mesa de Centro Araucaria artesanal" class="hero-card__img">
+                </div>
+
+                <!-- Elementos decorativos flotantes -->
+                <div class="floating-sparkle floating-sparkle--1" aria-hidden="true">✦</div>
+                <div class="floating-sparkle floating-sparkle--2" aria-hidden="true">✦</div>
+                <div class="floating-sparkle floating-sparkle--3" aria-hidden="true">✦</div>
+                <div class="floating-sparkle floating-sparkle--4" aria-hidden="true">✦</div>
+            </div>
+        </section>
+
+        <section class="featured">
+            <div class="featured__header">
+                <h2 class="featured__title">PIEZAS DESTACADAS</h2>
+                <p class="featured__subtitle">Selección del taller para transformar tu espacio.</p>
+            </div>
+
+            <section id="contenedor-productos" class="seccion-productos contenedor" aria-live="polite">
+                <p class="mensaje-carga">Las piezas están saliendo del taller...</p>
+            </section>
+        </section>
+    </main>
+
+    <hj-footer></hj-footer>
+    
+</body>
+</html>
