@@ -17,6 +17,8 @@ El proyecto consiste en una plataforma web y catálogo digital para un emprendim
 - **Página de Inicio (`index.html`)**: Presentación institucional con sección Hero, métricas destacadas, llamada a la acción y accesos directos al catálogo.
 - **Catálogo de Productos (`productos.html`)**: Vista de grilla interactiva para explorar las distintas piezas disponibles con información de precios, materiales y categorías.
 - **Detalle de Producto (`producto.html`)**: Vista detallada con galería de imágenes, especificaciones técnicas de materiales, medidas y opciones de compra o consulta.
+- **Página de Contacto (`contacto.html`)**: Formulario interactivo de consultas con validaciones y diseño integrado.
+- **Carrito de Compras**: Panel lateral (*off-canvas*) interactivo accesible desde el encabezado en todo el sitio, con contador dinámico de productos, gestión de cantidades, cálculo automático de totales y persistencia de datos mediante `localStorage`.
 - **Componentes Reutilizables (Web Components)**: Encabezado (`<hj-header>`) y pie de página (`<hj-footer>`) modulares para una experiencia consistente en todas las páginas.
 - **Diseño Responsive & Accesible**: Adaptabilidad para dispositivos móviles, tablets y desktop, optimización de tipografías locales y estándares semánticos.
 
@@ -31,6 +33,7 @@ El proyecto consiste en una plataforma web y catálogo digital para un emprendim
   - Módulos nativos (`type="module"`).
   - Web Components personalizados (Custom Elements) para componentes compartidos (header y footer).
   - Lógica dinámica de carga e interacción con el catálogo y vistas de detalle.
+  - Gestión de estado del carrito de compras y persistencia con `localStorage`.
 - **Git & GitHub Actions**: Control de versiones y flujo de integración/despliegue continuo (CI/CD) automatizado hacia **GitHub Pages**.
 
 ## 🚀 Despliegue
