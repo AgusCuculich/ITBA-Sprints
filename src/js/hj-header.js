@@ -151,29 +151,42 @@ class HjHeader extends HTMLElement {
             return;
         }
 
-        carrito.forEach((item, index) => {
-            total += item.precio * item.cantidad; // Vamos sumando el total
+carrito.forEach((item, index) => {
+            total += item.precio * item.cantidad; 
             
-            // Creamos el HTML de cada producto
             const divItem = document.createElement('div');
             divItem.className = 'item-carrito';
+            
+            // Agregamos los botones + y - con un estilo limpio en línea para no tocar el CSS general
             divItem.innerHTML = `
                 <img src="assets/images/${item.imagen}" alt="${item.nombre}" class="item-imagen">
                 <div class="item-detalles">
                     <h3 class="item-nombre">${item.nombre}</h3>
-                    <p class="item-precio">${formatearPrecioARS(item.precio)} x ${item.cantidad}</p>
-                    <div class="item-controles">
-                        <button class="btn-eliminar" id="btn-eliminar-${index}">Quitar pieza</button>
+                    <p class="item-precio">${formatearPrecioARS(item.precio)} c/u</p>
+                    
+                    <div class="item-controles" style="display: flex; gap: 15px; align-items: center; margin-top: 8px;">
+                        <div style="display: flex; align-items: center; border: 1px solid #e0e0e0; border-radius: 4px; background: #fff;">
+                            <button class="btn-restar" style="background: none; border: none; padding: 2px 10px; cursor: pointer; font-size: 1rem; color: #333;">-</button>
+                            <span style="font-size: 0.9rem; padding: 0 5px; font-weight: bold;">${item.cantidad}</span>
+                            <button class="btn-sumar" style="background: none; border: none; padding: 2px 10px; cursor: pointer; font-size: 1rem; color: #333;">+</button>
+                        </div>
+                        <button class="btn-eliminar" id="btn-eliminar-${index}">Quitar todo</button>
                     </div>
                 </div>
             `;
             contenedorItems.appendChild(divItem);
 
-            // Le damos vida al botón de "Quitar pieza"
+            // Botón de eliminar toda la pieza
             const btnEliminar = divItem.querySelector(`#btn-eliminar-${index}`);
-            btnEliminar.addEventListener('click', () => {
-                eliminarDelCarrito(item.id);
-            });
+            btnEliminar.addEventListener('click', () => eliminarDelCarrito(item.id));
+
+            // Botón de restar cantidad
+            const btnRestar = divItem.querySelector('.btn-restar');
+            btnRestar.addEventListener('click', () => modificarCantidad(item.id, -1));
+
+            // Botón de sumar cantidad
+            const btnSumar = divItem.querySelector('.btn-sumar');
+            btnSumar.addEventListener('click', () => modificarCantidad(item.id, 1));
         });
 
         // Actualizamos el total a pagar
@@ -193,6 +206,26 @@ class HjHeader extends HTMLElement {
         // Ejecutamos las actualizaciones
         renderizarCarrito(); // Redibuja la lista (el producto desaparece al instante)
         actualizarContador(); // Baja el numerito verde
+    };
+
+    // Función para sumar o restar unidades de un producto
+    const modificarCantidad = (id, cambio) => {
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        const index = carrito.findIndex(item => item.id === id);
+        
+        if (index !== -1) {
+            carrito[index].cantidad += cambio;
+            
+            // Si la cantidad llega a 0 al restar, eliminamos el producto del todo
+            if (carrito[index].cantidad <= 0) {
+                carrito = carrito.filter(item => item.id !== id);
+            }
+            
+            // Guardamos y actualizamos la vista y el contador
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            renderizarCarrito();
+            actualizarContador();
+        }
     };
   }
 }
