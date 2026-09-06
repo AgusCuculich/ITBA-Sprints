@@ -209,6 +209,53 @@ const configurarControles = () => {
             }
         });
     }
+    // --- LÓGICA DE AGREGAR AL CARRITO ---
+    const btnAgregarCarrito = document.getElementById('btn-agregar-carrito');
+    
+    if (btnAgregarCarrito && inputCantidad) {
+        btnAgregarCarrito.addEventListener('click', () => {
+            // 1. Obtenemos el producto actual que el usuario está viendo
+            const productoActual = obtenerProducto();
+            if (!productoActual) return;
+
+            // 2. Leemos la cantidad que eligió en el input
+            const cantidadSeleccionada = parseInt(inputCantidad.value, 10) || 1;
+
+            // 3. Traemos el carrito actual desde LocalStorage
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+            // 4. Verificamos si este producto ya estaba en el carrito
+            const indexProducto = carrito.findIndex((item) => item.id === productoActual.id);
+
+            if (indexProducto !== -1) {
+                // Si ya estaba, solo le sumamos la nueva cantidad
+                carrito[indexProducto].cantidad += cantidadSeleccionada;
+            } else {
+                // Si no estaba, creamos el nuevo registro
+                carrito.push({
+                    id: productoActual.id,
+                    nombre: productoActual.nombre,
+                    precio: productoActual.precio,
+                    imagen: productoActual.imagen,
+                    cantidad: cantidadSeleccionada
+                });
+            }
+
+            // 5. Guardamos el carrito actualizado en LocalStorage
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+
+            // 6. ¡Magia! Lanzamos el evento para avisarle al Header que actualice su número
+            window.dispatchEvent(new Event('carritoActualizado'));
+
+            // 7. Feedback visual: le cambiamos el texto al botón por 2 segundos para que sepa que funcionó
+            const textoOriginal = btnAgregarCarrito.innerText;
+            btnAgregarCarrito.innerText = '¡Agregado con éxito!';
+            
+            setTimeout(() => {
+                btnAgregarCarrito.innerText = textoOriginal;
+            }, 2000);
+        });
+    }
 };
 
 // 8. Inicializador: se ejecuta una vez cargado el DOM
