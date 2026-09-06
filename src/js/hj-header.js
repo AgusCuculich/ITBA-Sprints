@@ -21,7 +21,7 @@ class HjHeader extends HTMLElement {
                       <path d="M17 17h-11v-14h-2" />
                       <path d="M6 5l14 1l-1 7h-13" />
                   </svg>
-                  <span class="badge-carrito">2</span>
+                  <span class="badge-carrito" id="contador-carrito" style="display: none;">0</span>
               </div>
           </div>
       </header>
@@ -36,6 +36,28 @@ class HjHeader extends HTMLElement {
         enlace.classList.add('activo');
       }
     });
+    // --- LÓGICA DEL CARRITO (Contador dinámico) ---
+    const actualizarContador = () => {
+      // Leemos el carrito de LocalStorage, si no hay nada, usamos un array vacío
+      const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+      
+      // Sumamos las cantidades de todos los productos
+      const totalItems = carrito.reduce((total, item) => total + item.cantidad, 0);
+      
+      // Buscamos el badge en el DOM de este componente
+      const badge = this.querySelector('#contador-carrito');
+      if (badge) {
+        badge.textContent = totalItems;
+        // Solo mostramos el badge si hay más de 0 items
+        badge.style.display = totalItems > 0 ? 'flex' : 'none';
+      }
+    };
+
+    // 1. Calculamos el total apenas carga el header
+    actualizarContador();
+
+    // 2. Nos quedamos "escuchando" por si otra pantalla (como producto.js) agrega algo
+    window.addEventListener('carritoActualizado', actualizarContador);
   }
 }
 
