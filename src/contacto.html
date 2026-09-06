@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+     <script src="./js/hj-header.js" defer></script>
+    <script type="module" src="./js/hj-footer.js" defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto - Hermanos Jota</title>
@@ -14,21 +16,7 @@
     <link rel="stylesheet" href="css/contacto.css">
 </head>
 <body>
-    <header class="header-principal">
-        <div class="contenedor header-contenido">
-            <a href="index.html" class="logo-link">
-                <!-- FALTA: logo en formato .svg en assets/images/logo.svg -->
-                <span class="logo-texto">Hermanos Jota</span>
-            </a>
-            <nav class="navegacion-principal" aria-label="Navegación principal">
-                <ul class="lista-nav">
-                    <li><a href="index.html" class="link-nav">Taller</a></li>
-                    <li><a href="#catalogo" class="link-nav" id="link-nav-catalogo">Catálogo</a></li>
-                    <li><a href="#contacto" class="link-nav activo" id="link-nav-contacto" aria-current="page">Contacto</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <hj-header></hj-header>
 
     <main class="main-contacto-catalogo">
         <!-- Vista Catálogo (Diseño e Interfaz idéntica a productos.html) -->
@@ -121,29 +109,7 @@
             </section>
         </div>
     </main>
-
-    <footer class="footer-principal" id="contacto-footer">
-        <div class="contenedor footer-contenido">
-            <div class="bloque-footer">
-                <h3 class="titulo-footer">Hermanos Jota</h3>
-                <p class="texto-footer">Muebles con alma y oficio desde 1960.</p>
-                <p class="texto-footer" id="anio-actual">- Más de 60 años de historia en la madera.</p>
-            </div>
-            <div class="bloque-footer">
-                <h3 class="titulo-footer">Casa Taller</h3>
-                <p class="texto-footer">Av. San Juan 2847, San Cristóbal, CABA.</p>
-                <p class="texto-footer">Lun a Vie: 10:00 - 19:00 | Sáb: 10:00 - 14:00</p>
-            </div>
-            <div class="bloque-footer">
-                <h3 class="titulo-footer">Contacto</h3>
-                <p class="texto-footer">info@hermanosjota.com.ar</p>
-                <p class="texto-footer">+54 11 4567-8900</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p class="texto-footer-bottom">&copy; 2026 Hermanos Jota. Todos los derechos reservados. Hecho con oficio.</p>
-        </div>
-    </footer>
+<hj-footer></hj-footer>
 
     <script type="module" src="js/contacto.js"></script>
 </body>
